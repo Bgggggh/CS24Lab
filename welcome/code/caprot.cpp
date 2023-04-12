@@ -7,7 +7,6 @@ int main(int argc, char* argv[]) {
 
     
     num  = atoi(argv[argc - 1]);
-    cout << num << endl;
     
     getline(cin, strN);
     
