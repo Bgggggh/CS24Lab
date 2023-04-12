@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -18,7 +19,7 @@ int main(int argc, char* argv[]) {
         num = num%strNLength;
     }
     
-    if(num > strNLength){
+    if(abs (num) > strNLength){
         num = num%strNLength;
     }
     
