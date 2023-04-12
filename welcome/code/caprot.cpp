@@ -2,7 +2,6 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    cout << "here" << endl;
     int num, newnum;
     string strN;
 
