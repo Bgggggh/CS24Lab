@@ -32,14 +32,14 @@ int main(int argc, char* argv[]) {
     }
     if(num > 0){
         for(int i = 0; i < strNLength - num; ++i){
-            cout << "in for loop" << endl;
+            
             if(isupper(strN[i])){
                 k[i + num] = toupper(k[i + num]);
             }
         }
         
         for(int i = k.length() - num; i < strNLength; ++i){
-            cout << "entered other for loop" << endl;
+            
             if(isupper(strN[i])){
                 k[i + num - k.length()] = toupper(k[i + num - k.length()]);
             }
