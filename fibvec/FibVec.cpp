@@ -64,7 +64,7 @@ size_t FibVec::remove(size_t index)
 {
     if(counts != 0){
         int result = fib_vector[index];
-        for(i = index; i < counts; i++){
+        for(size_t i = index; i < counts; i++){
             fib_vector[i] = fib_vector[i + 1];
         }
         counts -= 1;
