@@ -11,6 +11,7 @@ private:
     size_t counts;
     int* fib_vector;
   // Helper Functions
+    void reorg();
 
 public:
   // Constructor and Destructoe
