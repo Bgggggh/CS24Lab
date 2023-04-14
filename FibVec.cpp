@@ -40,16 +40,16 @@ void FibVec::insert(int value, size_t index)
 
 int FibVec::pop()
 {
-    if(counts != 0){
-        int result = fib_vector[counts - 1];
-        counts -= 1;
-        return result;
+    if(counts == 0){
+        throw std::underflow_error("out of range");
     }
     
+    int result = fib_vector[counts - 1];
+    counts -= 1;
     reorg(size_t new_size);
     //call helper function
+    return result;
     
-    throw std::underflow_error("out of range");
 }
 
 void FibVec::push(int value)
