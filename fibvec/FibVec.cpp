@@ -6,6 +6,7 @@
 FibVec::FibVec(){
     fib_vector = new int[1];
     size = 1;
+    counts = 0;
 }
 
 FibVec::~FibVec(){
