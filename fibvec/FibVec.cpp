@@ -33,7 +33,7 @@ size_t FibVec::lookup(size_t index) const
 
 void FibVec::insert(int value, size_t index)
 {
-    if(index < size){
+    if(index < size && index > counts){
         fib_vector[index] = value;
         counts += 1;
     }
