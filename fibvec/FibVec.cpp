@@ -40,8 +40,8 @@ void FibVec::insert(int value, size_t index)
     else if(index == size){
         size += 1;
     }
-    for(int i = (int)(counts) - 1; i > (int)(index); --i){
-        fib_vector[i + 1] = fib_vector[i];
+    for(int i = (int)(counts); i > (int)(index); --i){
+        fib_vector[i] = fib_vector[i - 1];
     }
     fib_vector[index] = value;
     counts += 1;
@@ -67,7 +67,7 @@ void FibVec::push(int value)
     counts += 1;
     reorg();
     //call helper function
-    fib_vector[-1] = value;
+    fib_vector[] = value;
 }
 
 size_t FibVec::remove(size_t index)
@@ -95,7 +95,7 @@ FibVec* create_fibvec() {
 
 // FibVec Function Implementations
 void FibVec::reorg(){
-    if(counts >= size){
+    if(counts > size){
         size += 1;
     }
     else if(counts < size -2){
