@@ -40,8 +40,8 @@ void FibVec::insert(int value, size_t index)
     else if(index == size){
         size += 1;
     }
-    for(int i = (int)(counts); i > (int)(index); --i){
-        fib_vector[i] = fib_vector[i - 1];
+    for(int i = (int)(counts) - 1; i > (int)(index); --i){
+        fib_vector[i + 1] = fib_vector[i];
     }
     fib_vector[index] = value;
     counts += 1;
