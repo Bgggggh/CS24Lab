@@ -5,6 +5,8 @@
 
 FibVec::FibVec(){
     fib_vector = new int[1];
+    size = 1;
+    counts = 0;
 }
 
 FibVec::~FibVec(){
@@ -31,27 +33,56 @@ size_t FibVec::lookup(size_t index) const
 
 void FibVec::insert(int value, size_t index)
 {
-    if(index < counts){
-        fib_vector[index] = value;
+    if(index > counts){
+        throw std::out_of_range("out of range");
     }
-    throw std::out_of_range("out of range");
+    else if(index == size){
+        size += 1;
+    }
+    for(int i = index; i < (int)(counts); ++i){
+        fib_vector[i + 1] = fib_vector[i];
+    }
+    fib_vector[index] = value;
+    //fib_vector[index] = value;
+    //counts += 1;
+    
 }
 
 int FibVec::pop()
 {
-    if(counts != 0){
-        
+    if(counts == 0){
+        throw std::underflow_error("out of range");
     }
+    
+    int result = fib_vector[counts - 1];
+    counts -= 1;
+    reorg();
+    //call helper function
+    return result;
+    
 }
 
 void FibVec::push(int value)
 {
-    
+    counts += 1;
+    reorg();
+    //call helper function
+    fib_vector[-1] = value;
 }
 
 size_t FibVec::remove(size_t index)
 {
-    
+    if(counts != 0){
+        int result = fib_vector[index];
+        for(size_t i = index; i < counts; i++){
+            fib_vector[i] = fib_vector[i + 1];
+        }
+        counts -= 1;
+        reorg();
+        //call helper function
+        return result;
+    }
+    throw std::out_of_range("out of range");
 }
 
 
@@ -63,3 +94,11 @@ FibVec* create_fibvec() {
 
 
 // FibVec Function Implementations
+void FibVec::reorg(){
+    if(counts >= size){
+        size += 1;
+    }
+    else if(counts < size -2){
+        size -= 1;
+    }
+}
