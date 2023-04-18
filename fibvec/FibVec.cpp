@@ -45,7 +45,7 @@ void FibVec::insert(int value, size_t index)
         fib_vector[i + 1] = fib_vector[i];
     }
     fib_vector[index] = value;
-    /
+    
     counts += 1;
     
 }
