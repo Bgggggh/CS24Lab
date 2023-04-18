@@ -67,7 +67,7 @@ void FibVec::push(int value)
     counts += 1;
     reorg();
     //call helper function
-    fib_vector[] = value;
+    fib_vector[counts] = value;
 }
 
 size_t FibVec::remove(size_t index)
