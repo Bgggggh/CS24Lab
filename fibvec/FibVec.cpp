@@ -36,9 +36,8 @@ void FibVec::insert(int value, size_t index)
     if(index > counts){
         throw std::out_of_range("out of range");
     }
-    else if(index == size){
-        size += 1;
-    }
+    reorg();
+    //call helper function
     fib_vector[index] = value;
     counts += 1;
     
@@ -91,7 +90,7 @@ FibVec* create_fibvec() {
 
 // FibVec Function Implementations
 void FibVec::reorg(){
-    if(counts > size){
+    if(counts >= size){
         size += 1;
     }
     else if(counts < size -2){
