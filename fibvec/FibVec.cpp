@@ -41,7 +41,7 @@ void FibVec::insert(int value, size_t index)
         std::cout << index << std::endl;
         size += 1;
     }
-    for(int i = (int)(counts); i > index; --i){
+    for(int i = (int)(counts); i > (int)(index); --i){
         fib_vector[i + 1] = fib_vector[i];
     }
     fib_vector[index] = value;
