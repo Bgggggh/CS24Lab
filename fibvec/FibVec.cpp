@@ -33,7 +33,7 @@ size_t FibVec::lookup(size_t index) const
 
 void FibVec::insert(int value, size_t index)
 {
-    if(index > counts){
+    if(index > counts) && (index >= size){
         throw std::out_of_range("out of range");
     }
     fib_vector[index] = value;
