@@ -121,7 +121,7 @@ void FibVec::reorg(){
         num1 = num2;
         num2 = newSize;
     }
-    else if((int)(counts) < num1){
+    if((int)(counts) < num1){
         int* storeP = fib_vector;
         fib_vector = new int[num1];
         for(size_t i = 0; i < counts; i++){
