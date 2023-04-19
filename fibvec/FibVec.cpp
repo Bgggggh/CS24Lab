@@ -101,7 +101,7 @@ void FibVec::reorg(){
         int newSize = 0;
         int num1 = 1;
         int num2 = 1;
-        while(newSize <= size){
+        while(newSize <= (int)(size)){
             newSize = num1 + num2;
             num1 = num2;
             num2 = newSize;
@@ -118,7 +118,7 @@ void FibVec::reorg(){
     int num1 = 1;
     int num2 = 1;
     int newSize = 0;
-    while(newSize < size){
+    while(newSize < (int)(size)){
         newSize = num1 + num2;
         num1 = num2;
         num2 = newSize;
