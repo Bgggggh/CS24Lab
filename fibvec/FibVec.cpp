@@ -99,7 +99,7 @@ void FibVec::reorg(){
     if(counts > size){
         size += 1;
     }
-    else if(counts < (int)(size) -2){
+    else if((int)(counts) < (int)(size) -2){
         size -= 1;
     }
 }
