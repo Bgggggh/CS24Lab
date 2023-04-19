@@ -96,16 +96,28 @@ FibVec* create_fibvec() {
 
 // FibVec Function Implementations
 void FibVec::reorg(){
+    
+    int newSize = 0;
+    int num1 = 1;
+    int num2 = 1;
+    while(newSize < (int)(size)){
+        newSize = num1 + num2;
+        num1 = num2;
+        num2 = newSize;
+    }
+    //newSize = 8
+    //num1 =5, num2 = 8
     if(counts > size){
         //size += 1;
-        int newSize = 0;
-        int num1 = 1;
-        int num2 = 1;
-        while(newSize <= (int)(size)){
-            newSize = num1 + num2;
-            num1 = num2;
-            num2 = newSize;
-        }
+//        int newSize = 0;
+//        int num1 = 1;
+//        int num2 = 1;
+//        while(newSize <= (int)(size)){
+//            newSize = num1 + num2;
+//            num1 = num2;
+//            num2 = newSize;
+//        }
+        newSize = newSize + num1;
         int* storeP = fib_vector;
         fib_vector = new int[newSize];
         for(size_t i = 0; i < counts; i++){
@@ -113,16 +125,11 @@ void FibVec::reorg(){
         }
         delete[] storeP;
         size = newSize;
-        }
-    int num1 = 1;
-    int num2 = 1;
-    int newSize = 0;
-    while(newSize < (int)(size)){
-        newSize = num1 + num2;
-        num1 = num2;
-        num2 = newSize;
     }
-    if((int)(counts) < num1){
+    //newSize and num2 are 13
+    //num1 is 8
+    
+    if((int)(counts) < newSize - num1){
         int* storeP = fib_vector;
         fib_vector = new int[num1];
         for(size_t i = 0; i < counts; i++){
