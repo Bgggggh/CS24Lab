@@ -64,10 +64,11 @@ int FibVec::pop()
 
 void FibVec::push(int value)
 {
-    counts += 1;
     reorg();
     //call helper function
     fib_vector[counts] = value;
+    counts += 1;
+
 }
 
 size_t FibVec::remove(size_t index)
