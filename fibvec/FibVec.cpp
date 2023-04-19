@@ -109,6 +109,7 @@ void FibVec::reorg(){
     //newSize = 8
     //num1 =5, num2 = 8
     
+//    std::cout << "here" << size << counts << newSize - num1 << std::endl;
     if(counts == size){
         //size += 1;
 //        int newSize = 0;
@@ -130,15 +131,15 @@ void FibVec::reorg(){
     }
     //newSize and num2 are 13
     //num1 is 8
-    
     else if((size != 1) && (int)(counts) < newSize - num1){
+//        std::cout << "entered downsize" << std::endl;
         int* storeP = fib_vector;
         fib_vector = new int[num1];
-        for(size_t i = 0; i < counts; i++){
+        for(int i = 0; i < (int)(counts); i++){
             fib_vector[i] = storeP[i];
         }
         delete[] storeP;
-        size = newSize;
+        size = num1;
     }
 
 }
