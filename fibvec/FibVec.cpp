@@ -112,9 +112,7 @@ void FibVec::reorg(){
             fib_vector[i] = storeP[i];
         }
         delete[] storeP;
-        
         }
-    }
     int num1 = 1;
     int num2 = 1;
     int newSize = 0;
@@ -131,6 +129,5 @@ void FibVec::reorg(){
         }
         delete[] storeP;
     }
-
 
 }
