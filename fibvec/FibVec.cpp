@@ -38,7 +38,7 @@ void FibVec::insert(int value, size_t index)
         throw std::out_of_range("out of range");
     }
     else if(index == size){
-        size += 1;
+        reorg();
     }
     for(int i = (int)(counts); i > (int)(index); --i){
         fib_vector[i] = fib_vector[i - 1];
@@ -97,9 +97,40 @@ FibVec* create_fibvec() {
 // FibVec Function Implementations
 void FibVec::reorg(){
     if(counts > size){
-        size += 1;
+        //size += 1;
+        int newSize = 0;
+        int num1 = 1;
+        int num2 = 1;
+        while(newSize <= size){
+            newSize = num1 + num2;
+            num1 = num2;
+            num2 = newSize;
+        }
+        int* storeP = fib_vector;
+        fib_vector = new int[newSize];
+        for(size_t i = 0; i < counts; i++){
+            fib_vector[i] = storeP[i];
+        }
+        delete[] storeP;
+        
+        }
     }
-    else if((int)(counts) < (int)(size) -2){
-        size -= 1;
+    int num1 = 1;
+    int num2 = 1;
+    int newSize = 0;
+    while(newSize < size){
+        newSize = num1 + num2;
+        num1 = num2;
+        num2 = newSize;
     }
+    else if(counts < num1){
+        int* storeP = fib_vector;
+        fib_vector = new int[num1];
+        for(size_t i = 0; i < counts; i++){
+            fib_vector[i] = storeP[i];
+        }
+        delete[] storeP;
+    }
+
+
 }
