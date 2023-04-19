@@ -129,7 +129,7 @@ void FibVec::reorg(){
     //newSize and num2 are 13
     //num1 is 8
     
-    if((int)(counts) < newSize - num1){
+    else if((int)(counts) < newSize - num1){
         int* storeP = fib_vector;
         fib_vector = new int[num1];
         for(size_t i = 0; i < counts; i++){
