@@ -35,7 +35,7 @@ Move::Move(const std::string& input) {
     
     number = stoi(input.substr(0,1));
     player = toupper(input[2]);
-    row = toupper(stoi(input.substr(4, 1)));
+    row = toupper(input[4]);
     column = stoi(input.substr(5, 1));
     
     
