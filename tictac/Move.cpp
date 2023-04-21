@@ -4,9 +4,9 @@
 // Space for implementing Move functions.
 
 Move::Move(const std::string& input) {
-    /*if(input.length() < 6){
+    if(input.length() < 6){
         throw ParseError("length is less than 6.");
-    }*/
+    }
     if((!(isdigit(input[0]))) || (input[0] == 0)){
         throw ParseError("The first element is not a digit.");
     }
@@ -35,7 +35,7 @@ Move::Move(const std::string& input) {
     
     number = stoi(input.substr(0,1));
     player = toupper(input[2]);
-    row = toupper(input[4]);
+    row = toupper(stoi(input.substr(4, 1)));
     column = stoi(input.substr(5, 1));
     
     
