@@ -19,7 +19,7 @@ Move::Move(const std::string& input) {
     if(!(isspace(input[3]))){
         throw ParseError("The fourth element is not a whitespace.");
     }
-    if((input[4] != 'A') && (input[4] != 'a') && (input[4] != 'B') && (input[4] != 'b') && (input[4] != 'C') && (input[4] != 'c')){
+    if((input[4] != 'A') || (input[4] != 'a') || (input[4] != 'B') || (input[4] != 'b') || (input[4] != 'C') || (input[4] != 'c')){
         throw ParseError("The fifth element is not A or B or C.");
     }
     if(!isdigit(input[5])){
