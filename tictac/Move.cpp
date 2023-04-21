@@ -34,8 +34,8 @@ Move::Move(const std::string& input) {
     }
     
     number = input[0];
-    player = input[2];
-    row = input[4];
+    player = toupper(input[2]);
+    row = toupper(input[4]);
     column = input[5];
     
     
