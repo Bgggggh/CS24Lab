@@ -33,10 +33,10 @@ Move::Move(const std::string& input) {
         throw ParseError("The eighth elment is not a #");
     }
     
-    number = std::__cxx11::stoi(input[0]);
+    number = stoi(input.substr(0,1));
     player = toupper(input[2]);
     row = toupper(input[4]);
-    column = std::__cxx11::stoi(input[5]);
+    column = stoi(input.substr(5, 1));
     
     
 }
