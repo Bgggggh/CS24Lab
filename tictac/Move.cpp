@@ -29,7 +29,7 @@ Move::Move(const std::string& input) {
     if((input.length() > 6) && (!(isspace(input[6])))){
         throw ParseError("The seventh element is not a whitespace.");
     }
-    if((input.length() > 7) && (input[7] != "#")){
+    if((input.length() > 7) && (input[7] != '#')){
         throw ParseError("The eighth elment is not a #");
     }
     
@@ -38,7 +38,7 @@ Move::Move(const std::string& input) {
     row = input[4];
     column = input[5];
     
-    }
+    
 }
 
 std::ostream& operator << (std::ostream& stream, const Move& move) {
