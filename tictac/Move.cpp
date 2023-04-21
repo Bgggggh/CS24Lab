@@ -7,7 +7,7 @@ Move::Move(const std::string& input) {
     if(input.length() < 6){
         throw ParseError("length is less than 6.");
     }
-    if(!(isdigit(input[0]))){
+    if((!(isdigit(input[0]))) && (1 <= (int)(input[0]) <= 9)){
         throw ParseError("The first element is not a digit.");
     }
     if(!(isspace(input[1]))){
