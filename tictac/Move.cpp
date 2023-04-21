@@ -13,7 +13,7 @@ Move::Move(const std::string& input) {
     if(!(isspace(input[1]))){
         throw ParseError("The second element is not a whitespace");
     }
-    if((input[2] != 'X') && (input[2] != 'x') && (input[2] != 'O') && (input[2] != 'o')){
+    if((input[2] != 'X') || (input[2] != 'x') || (input[2] != 'O') || (input[2] != 'o')){
         throw ParseError("The third element is not a X or O");
     }
     if(!(isspace(input[3]))){
