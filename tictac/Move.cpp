@@ -4,9 +4,9 @@
 // Space for implementing Move functions.
 
 Move::Move(const std::string& input) {
-    if(input.length() < 6){
+    /*if(input.length() < 6){
         throw ParseError("length is less than 6.");
-    }
+    }*/
     if((!(isdigit(input[0]))) || (input[0] == 0)){
         throw ParseError("The first element is not a digit.");
     }
