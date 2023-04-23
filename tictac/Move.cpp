@@ -26,7 +26,8 @@ Move::Move(const std::string& input) {
         //define number
     }
     
-    string play, nplay;
+    string play;
+    char nplay;
     is >> play;
     if(play.length() != 1){
         throw ParseError("not X or O");
