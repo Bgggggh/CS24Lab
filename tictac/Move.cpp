@@ -26,19 +26,19 @@ Move::Move(const std::string& input) {
         //define number
     }
     
-    string play;
+    string play, nplay;
     is >> play;
     if(play.length() != 1){
         throw ParseError("not X or O");
     }
     else{
-        play = play.at(0);
+        nplay = play.at(0);
     }
-    if((play != 'X') && (play != 'x') && (play != 'O') && (play != 'o')){
+    if((nplay != 'X') && (nplay != 'x') && (nplay != 'O') && (nplay != 'o')){
         throw ParseError("The second element is not a X or O");
     }
     else{
-        player = play;
+        player = nplay;
         //define player
     }
     
