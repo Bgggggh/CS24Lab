@@ -1,43 +1,74 @@
 #include "Errors.h"
 #include "Move.h"
 #include <iostream>
-
+using namespace std;
+#include <sstream>
 // Space for implementing Move functions.
 
 Move::Move(const std::string& input) {
     if(input.length() < 6){
         throw ParseError("length is less than 6.");
     }
-    if((!(isdigit(input[0]))) || (input[0] == 0)){
-        throw ParseError("The first element is not a digit.");
+    istringstream is (input);
+    string num;
+    is >> num;
+    if(num.length() != 1){
+        throw ParseError("Digit error.");
     }
-    if(!(isspace(input[1]))){
-        throw ParseError("The second element is not a whitespace");
+    else{
+        num = num.at(0);
     }
-    if((input[2] != 'X') && (input[2] != 'x') && (input[2] != 'O') && (input[2] != 'o')){
-        throw ParseError("The third element is not a X or O");
+    if((!(isdigit(number))) || (!((number > 0) && (number < 10)))){
+        throw ParseError("digit error");
     }
-    if(!(isspace(input[3]))){
-        throw ParseError("The fourth element is not a whitespace.");
-    }
-    if((input[4] != 'A') && (input[4] != 'a') && (input[4] != 'B') && (input[4] != 'b') && (input[4] != 'C') && (input[4] != 'c')){
-        throw ParseError("The fifth element is not A or B or C.");
-    }
-    if(!isdigit(input[5])){
-        throw ParseError("The sixth element is not a digit.");
+    else{
+        number = stoi(num);
+        //define number
     }
     
-    if((input.length() > 6) && (!(isspace(input[6])))){
-        throw ParseError("The seventh element is not a whitespace.");
+    string play;
+    is >> play;
+    if(play.length() != 1){
+        throw ParseError("not X or O");
     }
-    if((input.length() > 7) && (!(input.find("#")))){
-        throw ParseError("There should be # for comments");
+    else{
+        play = play.at(0);
+    }
+    if((play != 'X') && (play != 'x') && (play != 'O') && (play != 'o')){
+        throw ParseError("The second element is not a X or O");
+    }
+    else{
+        player = play;
+        //define player
     }
     
-    number = stoi(input.substr(0,1));
-    player = toupper(input[2]);
-    row = toupper(input[4]);
-    column = stoi(input.substr(5, 1));
+    string square;
+    is >> square;
+    if(square.length() != 2){
+        throw ParseError("location problems");
+    }
+    else{
+        if((square.at(0) != 'A') && (square.at(0) != 'a') && (square.at(0) != 'B') && (square.at(0) != 'b') && (square.at(0) != 'C') && (square.at(0) != 'c')){
+            throw ParseError("location problem1");
+        }
+        else{
+            row = square.at(0);
+            //define row
+        }
+        if(!isdigit(square.at(1))){
+            throw ParseError("location problem2");
+        }
+        else{
+            column = stoi(square.at(1));
+            //define column
+        }
+    }
+    
+    if(input.find("#") > 0){
+        if(!isspace(input[input.find("#") - 1])){
+            throw ParseError("the former of # should be a whitespace");
+        }
+    }
     
     
 }
