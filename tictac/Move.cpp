@@ -60,7 +60,7 @@ Move::Move(const std::string& input) {
             throw ParseError("location problem2");
         }
         else{
-            column = stoi(square.at(1));
+            column = (int)(square.at(1));
             //define column
         }
     }
