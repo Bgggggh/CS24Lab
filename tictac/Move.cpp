@@ -26,11 +26,11 @@ Move::Move(const std::string& input) {
         throw ParseError("The sixth element is not a digit.");
     }
     
-    if((input.find("#")) && (!(isspace(input[6])))){
+    if(input.length() > 6) && (!(isspace(input[6])))){
         throw ParseError("The seventh element is not a whitespace.");
     }
-    if((input.length() > 7) && (input[7] != '#')){
-        throw ParseError("The eighth elment is not a #");
+    if((input.length() > 7) && (!(input.find("#"))){
+        throw ParseError("There should be # for comments");
     }
     
     number = stoi(input.substr(0,1));
