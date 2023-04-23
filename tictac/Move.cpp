@@ -1,5 +1,6 @@
 #include "Errors.h"
 #include "Move.h"
+#include <iostream>
 
 // Space for implementing Move functions.
 
