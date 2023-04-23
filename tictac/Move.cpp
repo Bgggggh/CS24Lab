@@ -29,7 +29,7 @@ Move::Move(const std::string& input) {
     if(input.length() > 6) && (!(isspace(input[6])))){
         throw ParseError("The seventh element is not a whitespace.");
     }
-    if((input.length() > 7) && (!(input.find("#"))){
+    if((input.length() > 7) && (!(input.find("#")))){
         throw ParseError("There should be # for comments");
     }
     
