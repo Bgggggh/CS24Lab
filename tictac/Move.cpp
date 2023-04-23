@@ -23,7 +23,7 @@ Move::Move(const std::string& input) {
         throw ParseError("digit error");
     }
     else{
-        number = stoi(num1);
+        number = (int)(num1);
         //define number
     }
     
