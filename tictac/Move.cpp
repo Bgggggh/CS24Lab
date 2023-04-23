@@ -11,18 +11,19 @@ Move::Move(const std::string& input) {
     }
     istringstream is (input);
     string num;
+    char num1;
     is >> num;
     if(num.length() != 1){
         throw ParseError("Digit error.");
     }
     else{
-        num = num.at(0);
+        num1 = num.at(0);
     }
-    if((!(isdigit(number))) || (!((number > 0) && (number < 10)))){
+    if((!(isdigit(num1))) || (!((num1 > 0) && (num1 < 10)))){
         throw ParseError("digit error");
     }
     else{
-        number = stoi(num);
+        number = stoi(num1);
         //define number
     }
     
