@@ -58,7 +58,7 @@ Move::Move(const std::string& input) {
             row = toupper(square.at(0));
             //define row
         }
-        if(square.at(1) != '1' || square.at(1) != '2' || square.at(1) != '3'){
+        if(square.at(1) != '1' && square.at(1) != '2' && square.at(1) != '3'){
             throw ParseError("column problem");
         }
         else{
