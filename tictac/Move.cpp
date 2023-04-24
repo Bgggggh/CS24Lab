@@ -20,7 +20,7 @@ Move::Move(const std::string& input) {
     else{
         num1 = num.at(0);
     }
-    if((!(isdigit(num1))) || (!(((int)(num1) > 48) && ((int)(num1) < 58)))){
+    if((!(isdigit(num1))) || (!(((int)(num1) > 48) && ((int)(num1) < 58))) || (num1 != input[0])){
         throw ParseError("digit error");
     }
     else{
@@ -74,7 +74,6 @@ Move::Move(const std::string& input) {
             throw ParseError("comments need #");
         }
     }
-    
 }
 
 std::ostream& operator << (std::ostream& stream, const Move& move) {
