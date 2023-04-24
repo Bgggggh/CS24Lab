@@ -10,6 +10,7 @@ Move::Move(const std::string& input) {
         throw ParseError("length is less than 6.");
     }
     istringstream is (input);
+    
     string num;
     char num1;
     is >> num;
@@ -19,11 +20,11 @@ Move::Move(const std::string& input) {
     else{
         num1 = num.at(0);
     }
-    if((!(isdigit(num1))) || (!((num1 > 0) && (num1 < 10)))){
+    if((!(isdigit(num1))) || (!(((int)(num1) > 48) && ((int)(num1) < 58)))){
         throw ParseError("digit error");
     }
     else{
-        number = (int)(num1);
+        number = (int)(num1) - 48;
         //define number
     }
     
@@ -40,7 +41,7 @@ Move::Move(const std::string& input) {
         throw ParseError("The second element is not a X or O");
     }
     else{
-        player = nplay;
+        player = toupper(nplay);
         //define player
     }
     
@@ -51,27 +52,28 @@ Move::Move(const std::string& input) {
     }
     else{
         if((square.at(0) != 'A') && (square.at(0) != 'a') && (square.at(0) != 'B') && (square.at(0) != 'b') && (square.at(0) != 'C') && (square.at(0) != 'c')){
-            throw ParseError("location problem1");
+            throw ParseError("row problem");
         }
         else{
-            row = square.at(0);
+            row = toupper(square.at(0));
             //define row
         }
         if(!isdigit(square.at(1))){
-            throw ParseError("location problem2");
+            throw ParseError("column problem");
         }
         else{
-            column = (int)(square.at(1));
+            column = (int)(square.at(1)) - 48;
             //define column
         }
     }
     
-    if(input.find("#") > 0){
-        if(!isspace(input[input.find("#") - 1])){
-            throw ParseError("the former of # should be a whitespace");
+    string comment;
+    is >> comment;
+    if(comment.length() != 0){
+        if (comment.at(0) != '#'){
+            throw ParseError("comments need #");
         }
     }
-    
     
 }
 
