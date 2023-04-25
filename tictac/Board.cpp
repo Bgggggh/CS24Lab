@@ -126,9 +126,7 @@ char Board::check_win(){
 
 bool Board::check_draw(){
     //check it when arr.size() == 9
-    return ((check_win() != 'X') && (check_win() != 'O'))
-
-
+    return ((check_win() != 'X') && (check_win() != 'O'));
 }
 
 void Board::print_result(const Move& move) {
