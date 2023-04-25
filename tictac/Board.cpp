@@ -22,14 +22,14 @@ void Board::add_info(const Move& move){
 }
 
 bool Board::check_over(){
-    if(arr.size() == 0){
+    if(n == 0){
         //cout << "Game in progress: New game." << endl;
         return true;
     }
 }
 
 char Board::check_order(const Move& move){
-    if(n != move.number){
+    if((n + 1) != move.number){
         throw InvalidMove("the number order is incorrect");
         //check the number order: 1, 2, 3, 4, 5.....
     }
@@ -37,7 +37,7 @@ char Board::check_order(const Move& move){
         first_player = move.player;
     }
     
-    if((arr.size())%2 != 0){
+    if(n%2 != 0){
         int x = 0;
         for(int i = 1; i < 4; ++i){
             for(int i; int m = 1; i < 4; ++m){
@@ -46,7 +46,7 @@ char Board::check_order(const Move& move){
                 }
             }
         }
-        if(x > arr.size()/2){
+        if(x > n/2){
             if(move.player == 'X'){
                 throw InvalidMove("the next step should be O");
             }
@@ -133,16 +133,16 @@ void Board::print_result() {
     if(winner != ' ') {
         cout << "Game over: " << winner << "wins.\n";
     }
-    else if(check_draw()) {
+    else if(Board::check_draw()) {
         cout << "Game over: Draw.";
     }
-    else if(check_over()){
-        cout << cout << "Game in progress: New game.";
+    else if(Board::check_over()){
+        cout << "Game in progress: New game.";
     }
-    else if(check_order() == '0'){
+    else if(Board::check_order() == '0'){
         cout << "Game in progress: O's turn.";
     }
-    else if(check_order() == '1'){
+    else if(Board::check_order() == '1'){
         cout << "Game in progress: X's turn.";
     }
 }
