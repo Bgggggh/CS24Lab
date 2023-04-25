@@ -77,7 +77,7 @@ char Board::check_order(const Move& move){
 char Board::check_win(){
     
     for(int i = 1; i < 4; ++i){
-        if((arr[i][1] == arr[i][2]) && arr[i][2] == (arr[i][3])){
+        if((arr[i][1] == arr[i][2]) && (arr[i][2] == arr[i][3])){
             if(arr[i][i] == 'X'){
                 //cout << "Game over: X wins." << endl;
                 return 'X';
@@ -87,7 +87,7 @@ char Board::check_win(){
                 return 'O';
             }
         }
-        else if((arr[1][i]) == (arr[2][i]) == (arr[3][i])){
+        else if((arr[1][i] == arr[2][i]) && == (arr[2][i] == arr[3][i])){
             if(arr[i][i] == 'X'){
                 //cout << "Game over: X wins." << endl;
                 return 'X';
@@ -98,7 +98,7 @@ char Board::check_win(){
             }
         }
     }
-    if((arr[1][1]) == (arr[2][2]) == (arr[3][3])){
+    if((arr[1][1] == arr[2][2]) && (arr[2][2] == arr[3][3])){
         if(arr[2][2] == 'X'){
             //cout << "Game over: X wins." << endl;
             return 'X';
@@ -108,7 +108,7 @@ char Board::check_win(){
             return 'O';
         }
     }
-    else if((arr[1][3]) == (arr[2][2]) == (arr[3][1])){
+    else if((arr[1][3] == arr[2][2]) && (arr[2][2] == arr[3][1])){
         if(arr[2][2] == 'X'){
             //cout << "Game over: X wins." << endl;
             return 'X';
@@ -139,10 +139,10 @@ void Board::print_result() {
     else if(check_over()){
         cout << "Game in progress: New game.";
     }
-    else if(check_order() == '0'){
+    else if(check_order(const Move& move) == '0'){
         cout << "Game in progress: O's turn.";
     }
-    else if(check_order() == '1'){
+    else if(check_order(const Move& move) == '1'){
         cout << "Game in progress: X's turn.";
     }
 }
