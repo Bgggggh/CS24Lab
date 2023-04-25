@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "Errors.h"
 #include "Move.h"
+#include <iostream>
 
 int main(int argc, char** argv) {
   bool verbose = false;
@@ -26,7 +27,7 @@ int main(int argc, char** argv) {
           board.add_info(move);
       }
       
-    std::cout << board.result() << '\n';
+    std::cout << board.result(move) << '\n';
     return 0;
   }
   catch(const ParseError& e) {
