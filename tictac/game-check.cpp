@@ -5,6 +5,7 @@
 
 int main(int argc, char** argv) {
   bool verbose = false;
+  Board board;
 
   if(argc == 2 && std::string(argv[1]) == "-v") {
     verbose = true;
@@ -17,20 +18,20 @@ int main(int argc, char** argv) {
   std::string line;
 
   try {
-      Board board;
-      Move move2;
+      //Board board;
+      //Move move2;
       while(std::getline(std::cin, line)){
           Move move(line);
-          move2 = move;
+          //move2 = move;
           board.check_over();
           board.check_win();
           board.check_order(move);
           board.check_draw();
           board.add_info(move);
-          
+          board.print_result(move);
       }
       
-    board.print_result(move2);
+    //board.print_result(move2);
     return 0;
   }
   catch(const ParseError& e) {
