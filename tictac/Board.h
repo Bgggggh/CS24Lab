@@ -24,7 +24,7 @@ public:
     void add_info(const Move& move);
     
     void print_result();
-}
+};
 
 
 
