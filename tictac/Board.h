@@ -13,7 +13,6 @@ private:
     int row;
     char first_player = ' ';
     
-    
 public:
     bool check_over();
     char check_order(const Move& move);
@@ -23,7 +22,7 @@ public:
     //helper function
     void add_info(const Move& move);
     
-    void print_result();
+    void print_result(const Move& move);
 };
 
 
