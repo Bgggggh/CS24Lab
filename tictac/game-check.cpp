@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
       Board board;
       while(std::getline(std::cin, line)){
           Move move(line);
-          board.check_over(move);
+          board.check_over();
           board.check_win();
           board.check_order(move);
           board.check_draw();

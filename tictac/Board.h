@@ -16,12 +16,12 @@ private:
     
 public:
     bool check_over();
-    char check_order();
+    char check_order(const Move& move);
     char check_win();
     bool check_draw();
     
     //helper function
-    void add_info();
+    void add_info(const Move& move);
     
     void print_result();
 }
