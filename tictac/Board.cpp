@@ -140,7 +140,7 @@ void Board::print_result(const Move& move) {
     else if(check_over()){
         cout << "Game in progress: New game.";
     }
-    else if(check_order(move) == '0'){
+    else if(check_order(move)== '0'){
         cout << "Game in progress: O's turn.";
     }
     else if(check_order(move) == '1'){

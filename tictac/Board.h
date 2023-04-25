@@ -8,7 +8,7 @@
 class Board{
     
 private:
-    int arr[3][3] = {};
+    char arr[3][3] = {};
     int n = 0;
     int row;
     char first_player = ' ';
