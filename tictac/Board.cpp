@@ -5,30 +5,30 @@ using namespace std;
 // Space for implementing Board functions.
 
 void Board::add_info(const Move& move){
-    if(move.row = 'A'){
+    if(move.row == 'A'){
         row = 1;
     }
-    else if(move.row = 'B'){
+    else if(move.row == 'B'){
         row = 2;
     }
     else{
         row = 3;
     }
-    if(arr[row][move.coloum] != 0){
+    if(arr[row][move.column] != 0){
         throw InvalidMove("this location is occupied");
     }
-    arr[row][move.column] = player;
+    arr[row][move.column] = move.player;
     n += 1;
 }
 
-void Board::check_over(){
+bool Board::check_over(){
     if(arr.size() == 0){
         //cout << "Game in progress: New game." << endl;
         return true;
     }
 }
 
-void Board::check_order(const Move& move){
+char Board::check_order(const Move& move){
     if(n != move.number){
         throw InvalidMove("the number order is incorrect");
         //check the number order: 1, 2, 3, 4, 5.....
@@ -74,7 +74,7 @@ void Board::check_order(const Move& move){
     //check the X or O order
 }
 
-void Board::check_win(){
+char Board::check_win(){
     
     for(int i = 1; i < 4; ++i){
         if(arr[i][1] == arr[i][2] == arr[i][3]){
@@ -120,7 +120,7 @@ void Board::check_win(){
     }
 }
 
-void Board::check_draw(){
+bool Board::check_draw(){
     //check it when arr.size() == 9
     if((void Board::check_win() != "Game over: X wins.") && (void Board::check_win() != "Game over: O wins.")){
         //cout << "Game over: Draw." << endl;
