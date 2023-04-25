@@ -25,9 +25,10 @@ int main(int argc, char** argv) {
           board.check_order(move);
           board.check_draw();
           board.add_info(move);
+          std::cout << board.print_result(move) << '\n';
       }
       
-    std::cout << board.print_result(move) << '\n';
+    //std::cout << board.print_result(move) << '\n';
     return 0;
   }
   catch(const ParseError& e) {
