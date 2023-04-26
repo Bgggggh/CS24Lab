@@ -12,6 +12,7 @@ private:
     int n;
     int row;
     char first_player;
+    char previous_player;
     
     
 public:

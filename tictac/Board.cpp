@@ -13,6 +13,7 @@ Board::Board()
     }
         this->n=0;
         this -> first_player = ' ';
+        this -> previous_player = ' ';
 }
 void Board::add_info(const Move& move){
     if(move.row == 'A'){
@@ -50,39 +51,16 @@ char Board::check_order(const Move& move){
         first_player = move.player;
     }
     
-    if(n%2 != 0){
-        int x = 0;
-        for(int i = 0; i < 3; ++i){
-            for( int m = 0; m < 3; ++m){
-                if(arr[i][m] == 'X'){
-                    x += 1;
-                }
-            }
-        }
-        if(x > n/2){
-            if(move.player == 'X'){
-                throw InvalidMove("the next step should be O");
-            }
-            //cout << "Game in progress: O's turn." << endl;
-            return '0';
-        }
-        else{
-            if(move.player == 'O'){
-                throw InvalidMove("the next step should be X");
-            }
-            //cout << "Game in progress: X's turn." << endl;
-            return '1';
-        }
+    if(previous_player == move.player){
+        throw InvalidMove("it is an incorrect order");
+    }
+    
+    previous_player = move.player;
+    if(previous_player == 'X'){
+        return '1';
     }
     else{
-        if(first_player == 'X'){
-            //cout << "Game in progress: X's turn." << endl;
-            return '1';
-        }
-        else{
-            //cout << "Game in progress: O's turn." << endl;
-            return '0';
-        }
+        return '0';
     }
     //check the X or O order
 }
