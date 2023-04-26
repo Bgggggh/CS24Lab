@@ -24,7 +24,7 @@ void Board::add_info(const Move& move){
     else{
         row = 3;
     }
-    if(arr[row][move.column] != 0){
+    if(arr[row - 1][move.column - 1] != ' '){
         throw InvalidMove("this location is occupied");
     }
     arr[row][move.column] = move.player;
