@@ -135,15 +135,15 @@ void Board::print_result(const Move& move) {
         cout << "Game over: " << winner << "wins.\n";
     }
     else if(check_draw()) {
-        cout << "Game over: Draw.";
+        cout << "Game over: Draw.\n";
     }
     else if(check_over()){
-        cout << "Game in progress: New game.";
+        cout << "Game in progress: New game.\n";
     }
     else if(check_order(move)== '0'){
-        cout << "Game in progress: O's turn.";
+        cout << "Game in progress: O's turn.\n";
     }
     else if(check_order(move) == '1'){
-        cout << "Game in progress: X's turn.";
+        cout << "Game in progress: X's turn.\n";
     }
 }
