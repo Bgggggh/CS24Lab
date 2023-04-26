@@ -9,7 +9,6 @@ class Board{
     
 private:
     char arr[3][3];
-    int n;
     int row;
     char first_player;
     char previous_player;
@@ -17,6 +16,7 @@ private:
     
 public:
     Board();
+    int n;
     bool check_over();
     char check_order(const Move& move);
     char check_win();

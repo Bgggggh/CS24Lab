@@ -20,15 +20,22 @@ int main(int argc, char** argv) {
   try {
       //Board board;
       Move move2;
+
       while(std::getline(std::cin, line)){
           Move move(line);
           move2 = move;
+          
           board.check_over();
-          board.check_order(move);
-          board.check_draw();
+          
           board.check_win();
+          
+          board.check_order(move);
+         
+          board.check_draw();
+          
           board.add_info(move);
-          //board.print_result(move);
+          
+          
       }
       
     board.print_result(move2);

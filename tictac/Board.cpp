@@ -17,19 +17,21 @@ Board::Board()
 }
 void Board::add_info(const Move& move){
     if(move.row == 'A'){
-        row = 1;
+        row = 0;
     }
     else if(move.row == 'B'){
-        row = 2;
+        row = 1;
     }
     else{
-        row = 3;
+        row = 2;
     }
-    if(arr[row - 1][move.column - 1] != ' '){
+    if(arr[row][move.column - 1] != ' '){
+        
         throw InvalidMove("this location is occupied");
     }
-    arr[row][move.column] = move.player;
+    arr[row][move.column - 1] = move.player;
     n += 1;
+    
 }
 
 bool Board::check_over(){
@@ -44,6 +46,7 @@ bool Board::check_over(){
 
 char Board::check_order(const Move& move){
     if((n + 1) != move.number){
+        cout << n <<' ' << move.number << endl;
         throw InvalidMove("the number order is incorrect");
         //check the number order: 1, 2, 3, 4, 5.....
     }
