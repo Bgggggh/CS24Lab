@@ -117,13 +117,13 @@ char Board::check_win(){
 
 bool Board::check_draw(){
     //check it when arr.size() == 9
-    return ((check_win() != 'X') && (check_win() != 'O') && (n != 0));
+    return ((check_win() != 'X') && (check_win() != 'O') && (n == 9));
 }
 
 void Board::print_result(const Move& move) {
     char winner = check_win();
     if(winner != 'm') {
-        cout << "Game over: " << winner << "wins.\n";
+        cout << "Game over: " << winner << " wins.\n";
     }
     else if(check_draw()) {
         cout << "Game over: Draw.\n";
