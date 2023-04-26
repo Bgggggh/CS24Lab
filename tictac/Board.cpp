@@ -4,6 +4,16 @@
 using namespace std;
 // Space for implementing Board functions.
 
+Board::Board()
+{
+    for(int i = 0; i < 3; ++1){
+        for(int m = 0; m < 3; m++){
+            arr[i][m] = '';
+        }
+    }
+        this->n=0;
+        this -> first_player = ' ';
+}
 void Board::add_info(const Move& move){
     if(move.row == 'A'){
         row = 1;
