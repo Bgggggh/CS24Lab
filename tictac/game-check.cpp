@@ -24,9 +24,9 @@ int main(int argc, char** argv) {
           Move move(line);
           move2 = move;
           board.check_over();
-          board.check_win();
           board.check_order(move);
           board.check_draw();
+          board.check_win();
           board.add_info(move);
           //board.print_result(move);
       }
