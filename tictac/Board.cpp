@@ -45,8 +45,8 @@ bool Board::check_over(){
 }
 
 char Board::check_order(const Move& move){
-    if((n + 1) != move.number){
-        //cout << n <<' ' << move.number << endl;
+    if(n != move.number){
+        cout << n <<' ' << move.number << endl;
         throw InvalidMove("the number order is incorrect");
         //check the number order: 1, 2, 3, 4, 5.....
     }
@@ -55,10 +55,13 @@ char Board::check_order(const Move& move){
     }
     
     if(previous_player == move.player){
+        cout << previous_player << move.player << endl;
         throw InvalidMove("it is an incorrect order");
     }
-    
-    previous_player = move.player;
+    if(n != move.number){
+        previous_player = move.player;
+    }
+    //previous_player = move.player;
     if(previous_player == 'X'){
         return '1';
     }

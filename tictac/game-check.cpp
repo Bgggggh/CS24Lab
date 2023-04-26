@@ -25,15 +25,16 @@ int main(int argc, char** argv) {
           Move move(line);
           move2 = move;
           
+          board.add_info(move);
           board.check_over();
           
           board.check_win();
           
           board.check_order(move);
-         
+          
           board.check_draw();
           
-          board.add_info(move);
+          //board.add_info(move);
           
           
       }
