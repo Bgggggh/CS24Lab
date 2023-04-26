@@ -5,6 +5,13 @@ using namespace std;
 #include <sstream>
 // Space for implementing Move functions.
 
+Move::Move(){
+    number = 1;
+    player = 'X';
+    row = 'A';
+    column = 1;
+}
+
 Move::Move(const std::string& input) {
     if(input.length() < 6){
         throw ParseError("length is less than 6.");

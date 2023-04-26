@@ -42,8 +42,8 @@ char Board::check_order(const Move& move){
     
     if(n%2 != 0){
         int x = 0;
-        for(int i = 1; i < 4; ++i){
-            for( int m = 1; m < 4; ++m){
+        for(int i = 0; i < 3; ++i){
+            for( int m = 0; m < 3; ++m){
                 if(arr[i][m] == 'X'){
                     x += 1;
                 }
@@ -79,8 +79,8 @@ char Board::check_order(const Move& move){
 
 char Board::check_win(){
     
-    for(int i = 1; i < 4; ++i){
-        if((arr[i][1] == arr[i][2]) && (arr[i][2] == arr[i][3])){
+    for(int i = 0; i < 3; ++i){
+        if((arr[i][0] == arr[i][1]) && (arr[i][1] == arr[i][2]) && (arr[i][0] != 0)){
             if(arr[i][i] == 'X'){
                 //cout << "Game over: X wins." << endl;
                 return 'X';
@@ -90,7 +90,7 @@ char Board::check_win(){
                 return 'O';
             }
         }
-        else if((arr[1][i] == arr[2][i]) && (arr[2][i] == arr[3][i])){
+        else if((arr[0][i] == arr[1][i]) && (arr[1][i] == arr[2][i]) && (arr[0][i] != 0)){
             if(arr[i][i] == 'X'){
                 //cout << "Game over: X wins." << endl;
                 return 'X';
@@ -101,8 +101,8 @@ char Board::check_win(){
             }
         }
     }
-    if((arr[1][1] == arr[2][2]) && (arr[2][2] == arr[3][3])){
-        if(arr[2][2] == 'X'){
+    if((arr[0][0] == arr[1][1]) && (arr[1][1] == arr[2][2]) && (arr[0][0] != 0)){
+        if(arr[1][1] == 'X'){
             //cout << "Game over: X wins." << endl;
             return 'X';
         }
@@ -111,8 +111,8 @@ char Board::check_win(){
             return 'O';
         }
     }
-    else if((arr[1][3] == arr[2][2]) && (arr[2][2] == arr[3][1])){
-        if(arr[2][2] == 'X'){
+    else if((arr[0][2] == arr[1][1]) && (arr[1][1] == arr[2][0]) && (arr[1][1] != 0)){
+        if(arr[1][1] == 'X'){
             //cout << "Game over: X wins." << endl;
             return 'X';
         }
@@ -131,7 +131,7 @@ bool Board::check_draw(){
 
 void Board::print_result(const Move& move) {
     char winner = check_win();
-    if(winner != ' ') {
+    if(winner != 'm') {
         cout << "Game over: " << winner << "wins.\n";
     }
     else if(check_draw()) {
