@@ -6,9 +6,9 @@ using namespace std;
 
 Board::Board()
 {
-    for(int i = 0; i < 3; ++1){
+    for(int i = 0; i < 3; ++i){
         for(int m = 0; m < 3; m++){
-            arr[i][m] = '';
+            arr[i][m] = ' ';
         }
     }
         this->n=0;
