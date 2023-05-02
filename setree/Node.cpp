@@ -1,5 +1,5 @@
 #include "Node.h"
-Node::Node() : val('-'), left(nullptr), right(nullptr), count(0) {}
+Node::Node() : val(""), left(nullptr), right(nullptr), count(0) {}
 Node::Node(const string& val) : val(val), left(nullptr), right(nullptr), count(1) {}
 Node::Node(const Node& other) : val(other.val), left(nullptr), right(nullptr), count(other.count){
     if(other.left){
