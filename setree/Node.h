@@ -7,6 +7,7 @@ using namespace std;
 // Implement Node member functions and helper functions in Node.cpp.
 class Node{
 public:
+    string val;
     Node();
     Node(const string& value);
     Node(const Node& other);
@@ -19,7 +20,7 @@ public:
     Node* left;
     Node* right;
     int count;
-    string val;
+    
 };
 
 
