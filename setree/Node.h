@@ -15,7 +15,7 @@ public:
 
     Node* left;
     Node* right;
-    int count;
+    size_t count;
 
     size_t countF(Node* node) const;
     void printF(Node* node) const;
