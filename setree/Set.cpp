@@ -21,6 +21,7 @@ Set::Set(Set&& other) {
 
 Set::~Set() {
     delete mRoot;
+    mRoot = NULL;
 }
 
 size_t Set::clear(){

@@ -23,7 +23,9 @@ void Node::copyF(Node* node, Node* &insertNode){
 
 Node::~Node(){
     delete left;
+    left = NULL;
     delete right;
+    right = NULL;
 }
 
 size_t Node::claerF(Node* node) const{
