@@ -1,5 +1,6 @@
 #include "Set.h"
 #include <stdexcept>
+#include <iostream>
 using namespace std;
 
 Set::Set() : mRoot(nullptr) {}
@@ -8,7 +9,8 @@ Set::Set(const Set& other) : mRoot(nullptr){
         mRoot = new Node(*other.mRoot);
     }
 }
-Set::Set(Set&& other) : mRoot(other.mRoot){
+Set::Set(Set&& other) {
+    this->mRoot = other.mRoot;
     other.mRoot = nullptr;
 }
 
@@ -30,20 +32,18 @@ bool Set::contains(const std::string& value) const{
         else if(value < curr->val){
             curr = curr->left;
         }
-        else if(value > curr->val){
+        else{
             curr = curr->right;
         }
-        else{
-            return false;
-        }
     }
+    return false;
 }
 
 size_t Set::count() const{
     return mRoot->countF(mRoot);
 }
 
-void Set::debug() const {}
+void Set::debug(){}
 
 size_t Set::insert(const string& value){
     if(contains(value)){
@@ -75,9 +75,10 @@ size_t Set::insert(const string& value){
         else{
             preNode -> right = newNode;
         }
-        
+        return 1;
         
     }
+    return 0;
 }
 
 const std::string& Set::lookup(size_t n) const{
@@ -101,4 +102,5 @@ const std::string& Set::lookup(size_t n) const{
 
 void Set::print() const {
     mRoot -> printF(mRoot);
+    std::cout << std::endl;
 }

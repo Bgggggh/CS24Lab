@@ -12,11 +12,6 @@ Node::Node(const Node& other) : val(other.val), left(nullptr), right(nullptr), c
     }
 }
 
-Node::Node(Node&& other) : val(move(other.val)), left(other.left), right(other.left), count(other.count){
-    other.left = nullptr;
-    other.right = nullptr;
-    other.count = 0;
-}
 
 Node::~Node(){
     delete left;
@@ -38,7 +33,7 @@ size_t Node::countF(Node* node) const {
         return 0;
     }
     else{
-        return  countF((node -> left) + (node -> right)) + 1;
+        return  countF((node -> left) + countF(node -> right)) + 1;
     }
 }
 
@@ -53,7 +48,9 @@ void Node::printF(Node* node) const{
         else{
             cout << '(';
             printF(node -> left);
+            cout << " ";
             cout << node -> val;
+            cout << " ";
             printF(node -> right);
             cout << ')';
         }

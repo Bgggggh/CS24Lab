@@ -11,7 +11,6 @@ public:
     Node();
     Node(const string& value);
     Node(const Node& other);
-    Node(Node&& other);
     ~Node();
 
     Node* left;
