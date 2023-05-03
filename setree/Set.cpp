@@ -104,3 +104,7 @@ void Set::print() const {
     mRoot -> printF(mRoot);
     std::cout << std::endl;
 }
+
+size_t Set::remove(const std::string& value){
+    return 1;
+}
