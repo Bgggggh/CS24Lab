@@ -30,7 +30,7 @@ size_t Node::claerF(Node* node) const{
     size_t count1 = countF(node);
     delete node;
     node = nullptr;
-    return countF(node);
+    return count1;
 }
 
 size_t Node::countF(Node* node) const {
