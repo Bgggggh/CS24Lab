@@ -24,7 +24,12 @@ Node::~Node(){
 }
 
 size_t Node::claerF(Node* node) const{
-    
+    if(node == NULL){
+        return 0;
+    }
+    delete node;
+    node = nullptr;
+    return countF(node);
 }
 
 size_t Node::countF(Node* node) const {
