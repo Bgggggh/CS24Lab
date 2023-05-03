@@ -20,7 +20,7 @@ public:
     size_t countF(Node* node) const;
     void printF(Node* node) const;
     size_t claerF(Node* node) const;
-    
+    void copyF(Node* node, Node* &insertedNode);
 };
 
 

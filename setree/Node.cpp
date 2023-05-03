@@ -12,6 +12,14 @@ Node::Node(const Node& other) : val(other.val), left(nullptr), right(nullptr), c
     }
 }
 
+void Node::copyF(Node* node, Node* &insertNode){
+    if(node == NULL){
+        return;
+    }
+    insertNode = new Node(node->val);
+    copyF(node->left, insertNode->left);
+    copyF(node->right, insertNode->right);
+}
 
 Node::~Node(){
     delete left;
@@ -55,4 +63,5 @@ void Node::printF(Node* node) const{
             cout << ')';
         }
     }
+
 }

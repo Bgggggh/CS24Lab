@@ -6,7 +6,12 @@ using namespace std;
 Set::Set() : mRoot(nullptr) {}
 Set::Set(const Set& other) : mRoot(nullptr){
     if(other.mRoot){
-        mRoot = new Node(*other.mRoot);
+        
+
+        mRoot = new Node(other.mRoot->val);
+        mRoot->copyF(other.mRoot->left, mRoot->left);
+        mRoot->copyF(other.mRoot->right, mRoot->right);
+
     }
 }
 Set::Set(Set&& other) {
