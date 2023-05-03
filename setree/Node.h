@@ -13,13 +13,14 @@ public:
     Node(const Node& other);
     Node(Node&& other);
     ~Node();
-   
-    Node& operator = (const Node& other);
-    Node& operator = (Node&& other);
 
     Node* left;
     Node* right;
     int count;
+
+    size_t countF(Node* node) const;
+    void printF(Node* node) const;
+    size_t claerF(Node* node) const;
     
 };
 
