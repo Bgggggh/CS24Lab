@@ -17,7 +17,7 @@ Set::~Set() {
 }
 
 size_t Set::clear(){
-   
+   return mRoot -> claerF(mRoot);
 }
 
 
@@ -40,10 +40,10 @@ bool Set::contains(const std::string& value) const{
 }
 
 size_t Set::count() const{
-    mRoot->countF(mRoot);
+    return mRoot->countF(mRoot);
 }
 
-void Set::debug() const{}
+void Set::debug() const {}
 
 size_t Set::insert(const string& value){
     if(contains(value)){
