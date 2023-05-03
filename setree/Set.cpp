@@ -68,9 +68,11 @@ size_t Set::insert(const string& value){
                 return 0;
             }
             else if(value < currNode -> val){
+                currNode->count = currNode->count + 1;
                 currNode = currNode -> left;
             }
             else if(value > currNode -> val){
+                currNode->count = currNode->count + 1;
                 currNode = currNode -> right;
             }
         }
@@ -92,14 +94,18 @@ const std::string& Set::lookup(size_t n) const{
         throw std::out_of_range("look up out of range");
     }
     Node* currNode = mRoot;
+    size_t ct = 0;
     while(currNode){
-        if(n == currNode -> left -> count){
+        if(currNode->left != NULL) ct = currNode->left->count;
+        else ct = 0;
+        if(n == ct){
             return currNode -> val;
         }
-        else if(n < currNode -> left -> count){
+        else if(n < ct){
             currNode = currNode -> left;
         }
         else{
+            n = n - ct - 1;
             currNode = currNode -> right;
         }
     }
