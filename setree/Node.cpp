@@ -33,7 +33,7 @@ size_t Node::countF(Node* node) const {
         return 0;
     }
     else{
-        return  countF((node -> left) + countF(node -> right)) + 1;
+        return  countF(node -> left) + countF(node -> right) + 1;
     }
 }
 
