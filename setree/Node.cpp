@@ -22,10 +22,7 @@ void Node::copyF(Node* node, Node* &insertNode){
 }
 
 Node::~Node(){
-    delete left;
-    left = NULL;
-    delete right;
-    right = NULL;
+   
 }
 
 size_t Node::claerF(Node* node) const{
@@ -33,6 +30,8 @@ size_t Node::claerF(Node* node) const{
         return 0;
     }
     size_t count1 = countF(node);
+    claerF(node->left);
+    clearF(node->right);
     delete node;
     node = nullptr;
     return count1;
