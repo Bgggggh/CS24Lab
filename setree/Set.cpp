@@ -25,7 +25,7 @@ Set::~Set() {
 }
 
 size_t Set::clear(){
-   return mRoot -> claerF(mRoot);
+   return mRoot -> clearF(mRoot);
 }
 
 
