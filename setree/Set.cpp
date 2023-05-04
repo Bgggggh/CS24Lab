@@ -86,6 +86,7 @@ size_t Set::insert(const string& value){
         return 1;
         
     }
+    delete mRoot;
     return 0;
 }
 
