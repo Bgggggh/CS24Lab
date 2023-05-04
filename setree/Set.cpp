@@ -174,6 +174,7 @@ size_t Set::remove(const std::string& value){
         else{
             parent -> right =child;
         }
+        delete node;
         return 1;
     }
     else{
