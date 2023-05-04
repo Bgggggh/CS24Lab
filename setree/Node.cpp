@@ -33,8 +33,8 @@ size_t Node::clearF(Node* node) const{
         return 0;
     }
     size_t count1 = countF(node);
-    clear(node->left);
-    clear(node->right);
+    clearF(node->left);
+    clearF(node->right);
     delete node;
     node = nullptr;
     return count1;
