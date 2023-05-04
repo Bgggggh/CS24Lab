@@ -118,6 +118,77 @@ void Set::print() const {
 }
 
 size_t Set::remove(const std::string& value){
-    return 1;
+    Node* node = mRoot;
+    Node* parent = nullptr;
+    bool find = false;
+    while(node != nullptr){
+        if(node->val == value){
+            find = true;
+            break;
+        }
+        else if(node->val > value){
+            parent = node;
+            node = node-> left;
+        }
+        else{
+            parent = node;
+            node = node ->right;
+        }
+
+    }
+    if(!find){
+        return 0;
+    }
+    size_t num_child = (node->left != nullptr) + (node->right != nullptr);
+    if(num_child == 0){
+        if(node == mRoot){
+            mRoot = nullptr;
+        }
+        else if(node == parent -> left){
+            parent->left = nullptr;
+        }
+        else{
+            parent->right = nullptr;
+        }
+        delete node;
+        return 1;
+    }
+    else if(num_child ==1){
+        Node* child = nullptr;
+        if(node->left != nullptr){
+            child = node->left;
+        }
+        else {
+            child = node->right;
+        }
+        if(node == mRoot){
+            mRoot = child;
+        }
+        else if(node == parent -> left){
+            parent -> left = child;
+        }
+        else{
+            parent -> right =child;
+        }
+        return 1;
+    }
+    else{
+         Node* pred_parent = node;
+        Node* pred = node->left;
+        while (pred->right != nullptr) {
+            pred_parent = pred;
+            pred = pred->right;
+        }
+        node->val = pred->val;
+        if (pred == pred_parent->left) {
+            pred_parent->left = pred->left;
+        } else {
+            pred_parent->right = pred->left;
+        }
+        pred->left = nullptr;
+        pred->right = nullptr;
+        delete pred;
+        return 1;
+    }
 }
 
