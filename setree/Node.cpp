@@ -25,7 +25,7 @@ Node::~Node(){
    
 }
 
-size_t Node::claerF(Node* node) const{
+size_t Node::clearF(Node* node) const{
     if(node == NULL){
         return 0;
     }
