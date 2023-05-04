@@ -20,12 +20,15 @@ Set::Set(Set&& other) {
 }
 
 Set::~Set() {
+    if(mRoot == nullptr) return;
     delete mRoot;
     mRoot = NULL;
 }
 
 size_t Set::clear(){
-   return mRoot -> clearF(mRoot);
+    size_t num = mRoot -> countF(mRoot);
+    Set::~Set();
+    return num;
 }
 
 
