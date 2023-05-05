@@ -1,3 +1,4 @@
+
 #include "Set.h"
 #include <stdexcept>
 #include <iostream>
@@ -161,9 +162,11 @@ size_t Set::remove(const std::string& value){
         Node* child = nullptr;
         if(node->left != nullptr){
             child = node->left;
+            node->left = nullptr;
         }
         else {
             child = node->right;
+            node->right = nullptr;
         }
         if(node == mRoot){
             mRoot = child;
