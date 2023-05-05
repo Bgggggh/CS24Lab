@@ -95,7 +95,7 @@ size_t Set::insert(const string& value){
 }
 
 const std::string& Set::lookup(size_t n) const{
-    if(mRoot == nullptr || count() <= n){
+    if(mRoot == nullptr || mRoot->countF(mRoot) <= n){
         throw std::out_of_range("look up out of range");
     }
     Node* currNode = mRoot;
