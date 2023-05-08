@@ -1,7 +1,6 @@
 #include "GenePool.h"
 #include <iostream>
 #include <sstream>
-#include "Person.cpp"
 using namespace std;
 
 // GenePool Member Functions
