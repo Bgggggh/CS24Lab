@@ -5,6 +5,7 @@
 
 #include <set>
 #include <string>
+using namespace std;
 
 // This is the Person class you need to implement.
 // It has many member functions that perform relationship queries.
@@ -13,12 +14,25 @@
 
 class Person {
   // Member Variables
+private:
+  string name_;
+  Gender gender_;
+  Person* mother_;
+  Person* father_;
+  set<Person*> children_;
 
   // Helper Functions
+  //void addChild(Person* child);
 
 public:
   // Constructor
+  Person(const string& name, Gender gender,Person* mother_, Person* father_);
+  Person();
   // Destructor?
+  ~Person();
+
+  //helper
+   void addChild(Person* child);
 
   // Required Getter Functions
   const std::string& name()   const;
