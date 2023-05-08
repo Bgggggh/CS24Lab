@@ -262,7 +262,7 @@ set<Person*> Person::aunts(PMod pmod, SMod smod) {
   return aunts;
 }
 
-set<Person*> Person::uncles(PMod pmod = PMod::ANY, SMod smod = SMod::ANY) {
+set<Person*> Person::uncles(PMod pmod, SMod smod) {
   std::set<Person*> unc;
   if (mother_ != nullptr) {
     std::set<Person*> motherSiblings = mother_->siblings(pmod, smod);
