@@ -158,7 +158,7 @@ set<Person*> Person::granddaughters(){
 
 set<Person*> Person::siblings(PMod pmod, SMod smod) {
     set<Person*> siblings;
-    if (mother_ != "???") {
+    if (mother_ != nullptr) {
         if(pmod == PMod::MATERNAL){
             if(smod == SMod::FULL){
                 for(Person* childs: mother_->children_){
@@ -214,7 +214,7 @@ set<Person*> Person::siblings(PMod pmod, SMod smod) {
                     }
                 }
                 for(Person* childs: father_->children_){
-                    if(childs!= this && childs->mother == mother_){
+                    if(childs!= this && childs->mother_ == mother_){
                         siblings.insert(childs);
                     }
                 }
