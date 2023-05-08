@@ -178,7 +178,7 @@ set<Person*> Person::siblings(PMod pmod, SMod smod) {
     return siblings;
 }
 
-set<Person*> Person::brothers(PMod pmod = PMod::ANY, SMod smod = SMod::ANY) {
+set<Person*> Person::brothers(PMod pmod, SMod smod) {
     set<Person*> bros;
     set<Person*> sibs = siblings(pmod, smod);
     for (auto sib : sibs) {
@@ -189,7 +189,7 @@ set<Person*> Person::brothers(PMod pmod = PMod::ANY, SMod smod = SMod::ANY) {
     return bros;
 }
 
-set<Person*> Person::sisters(PMod pmod = PMod::ANY, SMod smod = SMod::ANY){
+set<Person*> Person::sisters(PMod pmod, SMod smod){
     set<Person*> sis;
     set<Person*> sibs = siblings(pmod,smod);
     for(auto sib : sibs){
