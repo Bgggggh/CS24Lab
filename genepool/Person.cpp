@@ -1,5 +1,6 @@
 #include "Person.h"
 #include "Enums.h"
+using namespace std;
 
 // Person Member Functions
 Person::Person(const string& name, Gender gender,Person* mother_, Person* father_){
