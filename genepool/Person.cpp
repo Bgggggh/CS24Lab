@@ -161,100 +161,120 @@ set<Person*> Person::granddaughters(){
 }
 
 set<Person*> Person::siblings(PMod pmod, SMod smod) {
-    set<Person*> siblings;
+    set<Person*> allsiblings;
     for(Person* parent: parents(pmod)) {
-        siblings.merge(parent->children());
-        
+        allsiblings.merge(parent->children());
     }
 
     // Filter siblings by FULL/HALF/WHATEVER
-    if(pmod == PMod::MATERNAL){
-        if(smod == SMod::FULL){
-            for(Person* childs: mother_->children_){
-                if(childs!= this&& childs->father_ == father_){
-                    siblings.insert(childs);
-                }
+    
+    set<Person*> siblings;
+    for(Person* sibling: allsiblings) {
+        int shared = 0; // count shared parents
+        if(mother_ != nullptr && sibling->mother() == mother()) {
+            shared += 1;
+        }
+        if(father_ != nullptr && sibling->father() == father()) {
+            shared += 1;
+        }
+        
+        // do we want this sibling?
+        if(shared == 1) {
+            if(smod != SMod::FULL) {
+                siblings.insert(sibling);
             }
         }
-        else if(smod == SMod::HALF){
-            for(Person* childs: mother_->children_){
-                if(childs!= this && childs->father_ != father_){
-                    siblings.insert(childs);
+        else {
+            if(pmod == PMod::MATERNAL){
+                if(smod == SMod::FULL){
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this&& childs->father_ == father_){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
-            }
-        }
-        else{
-            for(Person* childs: mother_->children_){
-                if(childs!= this){
-                    siblings.insert(childs);
+                else if(smod == SMod::HALF){
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this && childs->father_ != father_){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
-            }
-        }
+                else{
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this){
+                            siblings.insert(childs);
+                        }
+                    }
+                }
 
-    }
-    else if(pmod == PMod::PATERNAL){
-        if(smod == SMod::FULL){
-            for(Person* childs: father_->children_){
-                if(childs!= this&& childs->mother_ == mother_){
-                    siblings.insert(childs);
+            }
+            else if(pmod == PMod::PATERNAL){
+                if(smod == SMod::FULL){
+                    for(Person* childs: father_->children_){
+                        if(childs!= this&& childs->mother_ == mother_){
+                            siblings.insert(childs);
+                        }
+                    }
+                }
+                else if(smod == SMod::HALF){
+                    for(Person* childs: father_->children_){
+                        if(childs!= this&& childs->mother_ != mother_){
+                            siblings.insert(childs);
+                        }
+                    }
+                }
+                else{
+                    for(Person* childs: father_->children_){
+                        if(childs!= this){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
             }
-        }
-        else if(smod == SMod::HALF){
-            for(Person* childs: father_->children_){
-                if(childs!= this&& childs->mother_ != mother_){
-                    siblings.insert(childs);
+            else{
+                if(smod == SMod::FULL){
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this && childs->father_ == father_){
+                            siblings.insert(childs);
+                        }
+                    }
+                    for(Person* childs: father_->children_){
+                        if(childs!= this && childs->mother_ == mother_){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
-            }
-        }
-        else{
-            for(Person* childs: father_->children_){
-                if(childs!= this){
-                    siblings.insert(childs);
+                else if(smod == SMod::HALF){
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this && childs->father_ != father_){
+                            siblings.insert(childs);
+                        }
+                    }
+                    for(Person* childs: father_->children_){
+                        if(childs!= this && childs->mother_ != mother_){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
-            }
-        }
-    }
-    else{
-        if(smod == SMod::FULL){
-            for(Person* childs: mother_->children_){
-                if(childs!= this && childs->father_ == father_){
-                    siblings.insert(childs);
-                }
-            }
-            for(Person* childs: father_->children_){
-                if(childs!= this && childs->mother_ == mother_){
-                    siblings.insert(childs);
-                }
-            }
-        }
-        else if(smod == SMod::HALF){
-            for(Person* childs: mother_->children_){
-                if(childs!= this && childs->father_ != father_){
-                    siblings.insert(childs);
-                }
-            }
-            for(Person* childs: father_->children_){
-                if(childs!= this && childs->mother_ != mother_){
-                    siblings.insert(childs);
-                }
-            }
-        }
-        else{
-            for(Person* childs: mother_->children_){
-                if(childs!= this){
-                    siblings.insert(childs);
-                }
-            }
-            for(Person* childs: father_->children_){
-                if(childs!= this){
-                    siblings.insert(childs);
+                else{
+                    for(Person* childs: mother_->children_){
+                        if(childs!= this){
+                            siblings.insert(childs);
+                        }
+                    }
+                    for(Person* childs: father_->children_){
+                        if(childs!= this){
+                            siblings.insert(childs);
+                        }
+                    }
                 }
             }
         }
     }
     
     return siblings;
+    
 }
 
 set<Person*> Person::brothers(PMod pmod, SMod smod) {
