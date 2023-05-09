@@ -324,41 +324,21 @@ set<Person*> Person::nephews(PMod pmod, SMod smod) {
     return nep;
 }
 
-set<Person*> Person::aunts(PMod pmod, SMod smod) {
-  set<Person*> result;
-
-  if (mother_) {
-    set<Person*> ms = mother_->siblings(pmod, SMod::FULL);
-    for (Person* allSib : ms) {
-      if (allSib != nullptr && allSib != mother_) {
-        result.insert(allSib);
-      }
-    }
-  }
-
-  if (father_) {
-    set<Person*> fs = father_->siblings(pmod, SMod::FULL);
-    for (Person* allSib : fs) {
-      if (allSib != nullptr && allSib != father_) {
-        result.insert(allSib);
-      }
-    }
-  }
-  if (smod != SMod::ANY) {
+set<Person*> Person::aunts(PMod pmod, SMod smod){
     set<Person*> aunts;
-    for (Person* aunt : result) {
-      if (aunt->gender() == Gender::FEMALE) {
-        if (smod == SMod::FULL) {
-          aunts.insert(aunt);
-        } else if (smod == SMod::HALF) {
-          aunts.insert(aunt);
-        }
-      }
-    }
-    result = aunts;
-  }
 
-  return result;
+    set<Person*> parents = this->parents(pmod);
+
+    for(auto parent : parents){
+        set<Person*> siblings = parent->siblings(pmod, smod);
+        for(auto sibling : siblings){
+            if(sibling->gender() == Gender::FEMALE){
+                aunts.insert(sibling);
+            }
+        }
+    }
+
+    return aunts;
 }
 
 set<Person*> Person::uncles(PMod pmod, SMod smod) {
