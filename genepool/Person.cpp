@@ -301,18 +301,10 @@ set<Person*> Person::sisters(PMod pmod, SMod smod){
 
 set<Person*> Person::nieces(PMod pmod, SMod smod) {
     set<Person*> nie;
-    set<Person*> siblings_ = siblings(pmod, SMod::ANY);
-    for (auto sib : siblings_) {
-        set<Person*> children_ = sib->children_;
-        for (auto child : children_) {
+    for (auto sib : siblings(pmod, smod)) {
+        for (auto child : sib->children_) {
             if (child->gender_ == Gender::FEMALE) {
-                if (smod == SMod::FULL && child->mother_ == mother_ && child->father_ == father_) {
-                    nie.insert(child);
-                } else if (smod == SMod::HALF && (child->mother_ == mother_ || child->father_ == father_)) {
-                    nie.insert(child);
-                } else if (smod == SMod::ANY) {
-                    nie.insert(child);
-                }
+                nie.insert(child);
             }
         }
     }
@@ -321,18 +313,10 @@ set<Person*> Person::nieces(PMod pmod, SMod smod) {
 
 set<Person*> Person::nephews(PMod pmod, SMod smod) {
     set<Person*> nep;
-    set<Person*> siblings_ = siblings(pmod, SMod::ANY);
-    for (auto sib : siblings_) {
-        set<Person*> children_ = sib->children_;
-        for (auto child : children_) {
+    for (auto sib : siblings(pmod, smod)) {
+        for (auto child : sib->children_) {
             if (child->gender_ == Gender::MALE) {
-                if (smod == SMod::FULL && child->mother_ == mother_ && child->father_ == father_) {
-                    nep.insert(child);
-                } else if (smod == SMod::HALF && (child->mother_ == mother_ || child->father_ == father_)) {
-                    nep.insert(child);
-                } else if (smod == SMod::ANY) {
-                    nep.insert(child);
-                }
+                nep.insert(child);
             }
         }
     }
