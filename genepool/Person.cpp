@@ -56,11 +56,15 @@ Person* Person::father(){
 
 set<Person*> Person::parents(PMod pmod) {
     set<Person*> parents;
-    if (pmod == PMod::MATERNAL || pmod == PMod::ANY) {
+    if (pmod == PMod::MATERNAL) {
         parents.insert(mother_);
     }
-    if (pmod == PMod::PATERNAL || pmod == PMod::ANY) {
+    else if (pmod == PMod::PATERNAL) {
         parents.insert(father_);
+    }
+    else{
+        parents.insert(father_);
+        parents.insert(mother_);
     }
     return parents;
 }
