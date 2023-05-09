@@ -359,23 +359,22 @@ set<Person*> Person::uncles(PMod pmod, SMod smod){
     return uncls;
 }
 
-set<Person*> Person::cousins(PMod pmod, SMod smod) {
-  set<Person*> cousins;
-  set<Person*> parentsSet = parents(pmod);
-  set<Person*> grandparentsSet = grandparents(pmod);
-  for (auto grandparent : grandparentsSet) {
-    set<Person*> siblingsSet = grandparent->siblings(pmod, smod);
-    for (auto sibling : siblingsSet) {
-      set<Person*> childrenSet = sibling->children();
-        if (childrenSet.find(this) != childrenSet.end()) {
-            for (auto child : childrenSet) {
-                if (child != this) {
-                    cousins.insert(child);}
-            }
+set<Person*> Person::cousins(PMod pmod, SMod smod){
+    set<Person*> cousins;
+    set<Person*> aunts = this->aunts(pmod, smod);
+    set<Person*> uncles = this->uncles(pmod, smod);
+    
+    for(auto aunt : aunts){
+        for(auto child : aunt->children_){
+            cousins.insert(child);
         }
     }
-  }
- return cousins;
+    for(auto uncle : uncles){
+        for(auto child : uncle->children_){
+            cousins.insert(child);
+        }
+    }
+    return cousins;
 }
 
 set<Person*> Person::descendants() {
