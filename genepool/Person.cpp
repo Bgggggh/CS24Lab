@@ -292,7 +292,7 @@ set<Person*> Person::sisters(PMod pmod, SMod smod){
     set<Person*> sis;
     set<Person*> sibs = siblings(pmod,smod);
     for(auto sib : sibs){
-        if(sib->gender_ == Gender::FEMALE){
+        if(sib->gender_ == Gender::FEMALE && sib != this){
             sis.insert(sib);
         }
     }
