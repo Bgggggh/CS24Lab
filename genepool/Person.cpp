@@ -139,7 +139,7 @@ set<Person*> Person::grandchildren() {
 set<Person*> Person::grandsons() {
     set<Person*> grands;
     for (auto child : children_) {
-        for(auto grandchild : child->children_){
+        for(auto grandchild : child ->children_){
             if(grandchild->gender_ == Gender::MALE){
                 grands.insert(grandchild);
             }
@@ -151,7 +151,7 @@ set<Person*> Person::grandsons() {
 set<Person*> Person::granddaughters(){
     set<Person*> grandd;
     for (auto child : children_) {
-        for(auto grandchild : child->children_){
+        for(auto grandchild : child->children_a){
             if(grandchild->gender_ == Gender::FEMALE){
                 grandd.insert(grandchild);
             }
@@ -162,6 +162,15 @@ set<Person*> Person::granddaughters(){
 
 set<Person*> Person::siblings(PMod pmod, SMod smod) {
     set<Person*> siblings;
+    for(Person* parent: parents(pmod)) {
+        siblings.merge(parent->children());
+    }
+
+    // Filter siblings by FULL/HALF/WHATEVER
+
+    return siblings;
+
+
     if (mother_ != nullptr) {
         if(pmod == PMod::MATERNAL){
             if(smod == SMod::FULL){
