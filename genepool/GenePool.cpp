@@ -30,14 +30,16 @@ GenePool::GenePool(istream& stream){
         string name;
         string gender;
         Gender g;
+        string motherName;
+        string fatherName;
+        getline(iss, name, '\t');
+
+        getline(iss, gender, '\t');
         if(gender=="male")
             g=Gender::MALE;
         else
             g=Gender::FEMALE;
-        string motherName;
-        string fatherName;
-        getline(iss, name, '\t');
-        getline(iss, gender, '\t');
+
         getline(iss, motherName, '\t');
         Person* mother_;
         if(motherName == "???"){
