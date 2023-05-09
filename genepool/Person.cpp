@@ -59,7 +59,7 @@ set<Person*> Person::parents(PMod pmod) {
     if (father_!= nullptr && pmod != PMod::MATERNAL) {
         parents.insert(father_);
     }
-    if (mother_ != nullptr && pmod == PMod::PATERNAL) {
+    if (mother_ != nullptr && pmod != PMod::PATERNAL) {
         parents.insert(mother_);
     }
     return parents;
