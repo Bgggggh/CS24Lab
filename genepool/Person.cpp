@@ -139,7 +139,7 @@ set<Person*> Person::grandchildren() {
 set<Person*> Person::grandsons() {
     set<Person*> grands;
     for (auto child : children_) {
-        for(grandchild : child->children){
+        for(auto grandchild : child->children){
             if(grandchild->gender_ == Gender::MALE){
                 grands.insert(grandchild);
             }
@@ -151,7 +151,7 @@ set<Person*> Person::grandsons() {
 set<Person*> Person::granddaughters(){
     set<Person*> grandd;
     for (auto child : children_) {
-        for(grandchild : child->children){
+        for(auto grandchild : child->children){
             if(grandchild->gender_ == Gender::FEMALE){
                 grandd.insert(grandchild);
             }
