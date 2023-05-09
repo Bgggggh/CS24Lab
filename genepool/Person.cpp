@@ -329,18 +329,18 @@ set<Person*> Person::aunts(PMod pmod, SMod smod) {
 
   if (mother_) {
     set<Person*> ms = mother_->siblings(pmod, SMod::FULL);
-    for (Person* aunt : ms) {
-      if (aunt != nullptr && aunt != mother_) {
-        result.insert(aunt);
+    for (Person* allSib : ms) {
+      if (allSib != nullptr && allSib != mother_) {
+        result.insert(allSib);
       }
     }
   }
 
   if (father_) {
     set<Person*> fs = father_->siblings(pmod, SMod::FULL);
-    for (Person* aunt : fs) {
-      if (aunt != nullptr && aunt != father_) {
-        result.insert(aunt);
+    for (Person* allSib : fs) {
+      if (allSib != nullptr && allSib != father_) {
+        result.insert(allSib);
       }
     }
   }
@@ -348,9 +348,9 @@ set<Person*> Person::aunts(PMod pmod, SMod smod) {
     set<Person*> aunts;
     for (Person* aunt : result) {
       if (aunt->gender() == Gender::FEMALE) {
-        if (smod == SMod::FULL && aunt->mother() == mother_ && aunt->father() == father_) {
+        if (smod == SMod::FULL) {
           aunts.insert(aunt);
-        } else if (smod == SMod::HALF && (aunt->mother() == mother_ || aunt->father() == father_)) {
+        } else if (smod == SMod::HALF) {
           aunts.insert(aunt);
         }
       }
