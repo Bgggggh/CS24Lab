@@ -273,6 +273,7 @@ set<Person*> Person::siblings(PMod pmod, SMod smod) {
         }
     }
     
+    siblings.remove(this);
     return siblings;
     
 }
