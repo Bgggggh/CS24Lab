@@ -325,25 +325,40 @@ set<Person*> Person::nephews(PMod pmod, SMod smod) {
 }
 
 set<Person*> Person::aunts(PMod pmod, SMod smod) {
-  set<Person*> aunts;
-  if (mother_ != nullptr) {
-    set<Person*> motherSiblings = mother_->siblings(pmod, smod);
-    for (Person* aunt : motherSiblings) {
-      if (aunt->gender() == Gender::FEMALE) {
-        aunts.insert(aunt);
-      }
-    }
-  }
-  if (father_ != nullptr) {
-    set<Person*> fatherSiblings = father_->siblings(pmod, smod);
-    for (Person* aunt : fatherSiblings) {
-      if (aunt->gender() == Gender::FEMALE) {
-        aunts.insert(aunt);
+  set<Person*> result;
+
+  if (mother_) {
+    set<Person*> ms = mother_->siblings(pmod, SMod::FULL);
+    for (Person* aunt : ms) {
+      if (aunt != nullptr && aunt != mother_) {
+        result.insert(aunt);
       }
     }
   }
 
-  return aunts;
+  if (father_) {
+    set<Person*> fs = father_->siblings(pmod, SMod::FULL);
+    for (Person* aunt : fs) {
+      if (aunt != nullptr && aunt != father_) {
+        result.insert(aunt);
+      }
+    }
+  }
+  if (smod != SMod::ANY) {
+    set<Person*> aunts;
+    for (Person* aunt : result) {
+      if (aunt->gender() == Gender::FEMALE) {
+        if (smod == SMod::FULL && aunt->mother() == mother_ && aunt->father() == father_) {
+          aunts.insert(aunt);
+        } else if (smod == SMod::HALF && (aunt->mother() == mother_ || aunt->father() == father_)) {
+          aunts.insert(aunt);
+        }
+      }
+    }
+    result = aunts;
+  }
+
+  return result;
 }
 
 set<Person*> Person::uncles(PMod pmod, SMod smod) {
