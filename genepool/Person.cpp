@@ -330,7 +330,7 @@ set<Person*> Person::aunts(PMod pmod, SMod smod){
     set<Person*> parents = this->parents(pmod);
 
     for(auto parent : parents){
-        set<Person*> siblings = parent->siblings(pmod, smod);
+        set<Person*> siblings = parent->siblings(PMod::ANY, smod);
         for(auto sibling : siblings){
             if(sibling->gender() == Gender::FEMALE){
                 aunts.insert(sibling);
@@ -341,25 +341,22 @@ set<Person*> Person::aunts(PMod pmod, SMod smod){
     return aunts;
 }
 
-set<Person*> Person::uncles(PMod pmod, SMod smod) {
-  std::set<Person*> unc;
-  if (mother_ != nullptr) {
-    std::set<Person*> motherSiblings = mother_->siblings(pmod, smod);
-    for (Person* uncl : motherSiblings) {
-      if (uncl->gender() == Gender::MALE) {
-        unc.insert(uncl);
-      }
+
+set<Person*> Person::uncles(PMod pmod, SMod smod){
+    set<Person*> uncls;
+
+    set<Person*> parents = this->parents(pmod);
+
+    for(auto parent : parents){
+        set<Person*> siblings = parent->siblings(PMod::ANY, smod);
+        for(auto sibling : siblings){
+            if(sibling->gender() == Gender::MALE){
+                uncls.insert(sibling);
+            }
+        }
     }
-  }
-  if (father_ != nullptr) {
-    std::set<Person*> fatherSiblings = father_->siblings(pmod, smod);
-    for (Person* uncl : fatherSiblings) {
-      if (uncl->gender() == Gender::MALE) {
-        unc.insert(uncl);
-      }
-    }
-  }
-  return unc;
+
+    return uncls;
 }
 
 set<Person*> Person::cousins(PMod pmod, SMod smod) {
