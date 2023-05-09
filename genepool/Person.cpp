@@ -56,7 +56,7 @@ Person* Person::father(){
 
 set<Person*> Person::parents(PMod pmod) {
     set<Person*> parents;
-    if (father_!= nullptr && pmod != PMod::MATERNAL) {
+    if (father_ != nullptr && pmod != PMod::MATERNAL) {
         parents.insert(father_);
     }
     if (mother_ != nullptr && pmod != PMod::PATERNAL) {
@@ -139,8 +139,10 @@ set<Person*> Person::grandchildren() {
 set<Person*> Person::grandsons() {
     set<Person*> grands;
     for (auto child : children_) {
-        if (child->gender_ == Gender::MALE) {
-            grands.insert(child->children_.begin(), child->children_.end());
+        for(grandchild : child->children){
+            if(grandchild->gender_ == Gender::MALE){
+                grands.insert(grandchild);
+            }
         }
     }
     return grands;
@@ -148,9 +150,11 @@ set<Person*> Person::grandsons() {
 
 set<Person*> Person::granddaughters(){
     set<Person*> grandd;
-    for(auto child : children_){
-        if(child->gender_ == Gender::FEMALE){
-            grandd.insert(child->children_.begin(), child->children_.end());
+    for (auto child : children_) {
+        for(grandchild : child->children){
+            if(grandchild->gender_ == Gender::FEMALE){
+                grandd.insert(grandchild);
+            }
         }
     }
     return grandd;
