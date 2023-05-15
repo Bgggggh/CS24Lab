@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <string>
+#include "DataStore.h"
 
 // This is the Counter class you need to implement.
 // It includes the Counter::Iterator as a nested class.
@@ -13,8 +14,16 @@ class Counter {
 public:
   class Iterator {
     // Member Variables
+    Node* curr_node;
 
   public:
+    Iterator() {
+      curr_node = nullptr;
+    }
+    Iterator(Node* node) {
+      curr_node = node;
+    }
+
     const std::string& key() const;
     int value() const;
 
@@ -25,6 +34,7 @@ public:
 
 private:
   // Member Variables
+  DoublyLinkedList dict;
 
 private:
   // Helper Functions
