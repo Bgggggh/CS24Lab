@@ -8,7 +8,7 @@ DoublyLinkedList::~DoublyLinkedList() {
         curr = curr->next;
         delete temp;
     }
-}
+} 
 
 Node* DoublyLinkedList::head_ptr() const {
     return head;
@@ -36,7 +36,7 @@ void DoublyLinkedList::insert(std::string key, int value) {
         tail = new_node;
     }
     count++;
-    map.add(key, new_node);
+    //map.add(key, new_node);
 }
 
 Node* DoublyLinkedList::search(std::string key) const{
