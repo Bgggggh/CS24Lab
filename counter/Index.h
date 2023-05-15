@@ -23,7 +23,7 @@ int hash_string(const std::string& str);
 
 class HashMap {
 private:
-    HashNode* table;
+    HashNode** table;
 
 public:
     HashMap(): table(new HashNode*[TABLE_SIZE]()) {}
