@@ -1,12 +1,6 @@
 #include "DataStore.h"
 
 // DataStore Member Functions
-DoublyLinkedList::DoublyLinkedList() {
-    Node* head = nullptr;
-    Node* tail = nullptr;
-    size_t count = 0;
-    HashMap map = {};
-}
 
 DoublyLinkedList::~DoublyLinkedList() {
     Node* curr = head;

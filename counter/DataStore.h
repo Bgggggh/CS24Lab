@@ -16,9 +16,9 @@ struct Node {
 
 class DoublyLinkedList {
   private:
-    Node* head;
-    Node* tail;
-    size_t count;
+    Node* head = nullptr;
+    Node* tail = nullptr;
+    size_t count = 0;
     HashMap map;
 
   public:
