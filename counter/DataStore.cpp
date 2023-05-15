@@ -1,7 +1,6 @@
 #include "DataStore.h"
 
 // DataStore Member Functions
-
 DoublyLinkedList::~DoublyLinkedList() {
     Node* curr = head;
     while(curr) {
@@ -65,5 +64,5 @@ bool DoublyLinkedList::remove(std::string key) {
     }
     delete curr;
     map.remove(key);
-    return true;
+    return true; // node removed successfully
 }

@@ -8,31 +8,31 @@
 
 struct Node;
 
-// Represents a node in the graph
+// Represents a node in our graph
 struct HashNode {
 public:
     std::string key;
     Node* node;
     HashNode* next;
-    HashNode(std::string str, Node* cur) : key(str), node(cur), next(nullptr) {}
+    HashNode(std::string str, Node* cur): key(str), node(cur), next(nullptr) {}
 };
 
-const int TABLE_SIZE = 100;
+// Our hash table maps string keys to nodes
+const int TABLE_SIZE = 100; // Size of the hash table array
 
 int hash_string(const std::string& str);
 
 class HashMap {
-private:
-    HashNode** table;
-
 public:
-    HashMap(): table(new HashNode*[TABLE_SIZE]()) {}
+    HashMap(): table(new HashNode*[TABLE_SIZE]()) {} // Initialize table to nullptrs
     ~HashMap();
 
     void add(const std::string& key, Node* cur);
     Node* get(const std::string& key) const;
     void remove(const std::string& key);
 
+private:
+    HashNode** table; // Array of pointers to HashNode
 };
 
 #endif
