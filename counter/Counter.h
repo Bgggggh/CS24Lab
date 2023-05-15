@@ -17,12 +17,8 @@ public:
     Node* curr_node;
 
   public:
-    Iterator() {
-      curr_node = nullptr;
-    }
-    Iterator(Node* node) {
-      curr_node = node;
-    }
+    Iterator() : curr_node(nullptr) { }
+    Iterator(Node* node) : curr_node(node) { }
 
     const std::string& key() const;
     int value() const;
@@ -34,7 +30,7 @@ public:
 
 private:
   // Member Variables
-  DoublyLinkedList dict;
+  DoublyLinkedList* dict;
 
 private:
   // Helper Functions

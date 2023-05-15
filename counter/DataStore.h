@@ -22,7 +22,6 @@ class DoublyLinkedList {
     HashMap map;
 
   public:
-    DoublyLinkedList();
     ~DoublyLinkedList();
 
     Node* head_ptr() const;
