@@ -41,7 +41,7 @@ void DoublyLinkedList::insert(std::string key, int value) {
 
 Node* DoublyLinkedList::search(std::string key) const{
     return map.get(key);
-}
+} 
 
 bool DoublyLinkedList::remove(std::string key) {
     auto curr = map.get(key);

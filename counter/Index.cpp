@@ -14,7 +14,7 @@ int hash_string(const std::string& str) {
 HashMap::~HashMap() {
     // Clean up memory when hash map is destroyed
     for (int i = 0; i < TABLE_SIZE; ++i) {
-        HashNode* curr = table[i];
+        HashNode* curr = table[i]; 
         while (curr) {
             HashNode* temp = curr;
             curr = curr->next;
@@ -37,7 +37,7 @@ void HashMap::add(const std::string& key, Node* cur) {
         curr->next = new HashNode(key, cur);
     }
 }
-
+ 
 Node* HashMap::get(const std::string& key) const {
     // Returns the node associated with the given key, or nullptr if not found
     int index = hash_string(key) % TABLE_SIZE;

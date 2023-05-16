@@ -9,7 +9,7 @@
 struct Node;
 
 // Represents a node in our graph
-struct HashNode {
+struct HashNode { 
 public:
     std::string key;
     Node* node;
