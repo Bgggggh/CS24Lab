@@ -63,6 +63,7 @@ bool DoublyLinkedList::remove(std::string key) {
                 curr->next->prev = curr->prev;
             }
             delete curr;
+            map.remove(key);
             return true;
         }
         curr = curr->next;
