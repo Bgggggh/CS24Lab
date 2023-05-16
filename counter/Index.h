@@ -9,7 +9,7 @@
 struct Node;
 
 // Represents a node in our graph
-struct HashNode { 
+struct HashNode {
 public:
     std::string key;
     Node* node;
@@ -24,7 +24,9 @@ int hash_string(const std::string& str);
 
 class HashMap {
 public:
-    HashMap(): table(new HashNode*[TABLE_SIZE]()) {} // Initialize table to nullptrs
+    HashMap() {
+        table = new HashNode*[TABLE_SIZE] {nullptr};
+    } // Initialize table to nullptrs
     ~HashMap();
 
     void add(const std::string& key, Node* cur);

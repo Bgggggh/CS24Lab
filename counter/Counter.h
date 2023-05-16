@@ -1,7 +1,7 @@
 #ifndef COUNTER_H
 #define COUNTER_H
 
-#include <cstddef> 
+#include <cstddef>
 #include <string>
 #include "DataStore.h"
 
@@ -20,11 +20,9 @@ public:
     Iterator() {
         curr_node = nullptr;
     }
-    
-    Iterator(Node* node){
+    Iterator(Node* node) {
         curr_node = node;
-    }
-      
+    } 
 
     const std::string& key() const;
     int value() const;

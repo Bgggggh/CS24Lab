@@ -2,7 +2,7 @@
 #define DATASTORE_H
 
 #include <string>
-#include "Index.h" 
+#include "Index.h"
 
 // Space to implement a separate datastore class, if you choose to do so.
 // This can make things simpler by clearly separating functionality.

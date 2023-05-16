@@ -41,28 +41,31 @@ void DoublyLinkedList::insert(std::string key, int value) {
 
 Node* DoublyLinkedList::search(std::string key) const{
     return map.get(key);
-} 
+}
 
 bool DoublyLinkedList::remove(std::string key) {
-    auto curr = map.get(key);
-    if (curr == nullptr)
-        return false;
-    count--;
-    if (curr == head) {
-        head = head->next;
-        if (head != nullptr) {
-            head->prev = nullptr;
+    Node* curr = head;
+    while (curr != nullptr) {
+        if (curr->key == key) {
+            count--;
+            if (curr == head) {
+                head = head->next;
+                if (head != nullptr) {
+                    head->prev = nullptr;
+                }
+            } else if (curr == tail) {
+                tail = tail->prev;
+                if (tail != nullptr) {
+                    tail->next = nullptr;
+                }
+            } else {
+                curr->prev->next = curr->next;
+                curr->next->prev = curr->prev;
+            }
+            delete curr;
+            return true;
         }
-    } else if (curr == tail) {
-        tail = tail->prev;
-        if (tail != nullptr) {
-            tail->next = nullptr;
-        }
-    } else {
-        curr->prev->next = curr->next;
-        curr->next->prev = curr->prev;
+        curr = curr->next;
     }
-    delete curr;
-    map.remove(key);
-    return true; // node removed successfully
+    return false;
 }
