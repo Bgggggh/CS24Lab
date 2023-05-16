@@ -24,12 +24,18 @@ int Counter::total() const {
 
 void Counter::inc(const std::string& key, int by) {
     auto node = dict->search(key);
-    node->value = node->value + by;
+    if (node)
+        node->value = node->value + by;
+    else
+        set(key, 0 + by);
 }
 
 void Counter::dec(const std::string& key, int by) {
     auto node = dict->search(key);
-    node->value = node->value - by;
+    if (node)
+        node->value = node->value - by;
+    else
+        set(key, 0 - by);
 }
 
 void Counter::del(const std::string& key) {
@@ -45,7 +51,11 @@ int Counter::get(const std::string& key) const{
 }
 
 void Counter::set(const std::string& key, int count) {
-    dict->insert(key, count);
+    auto node = dict->search(key);
+    if (node)
+        node->value = count;
+    else    
+        dict->insert(key, count);
 }
 
 Counter::Iterator Counter::begin() const {

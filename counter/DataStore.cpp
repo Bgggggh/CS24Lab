@@ -8,7 +8,7 @@ DoublyLinkedList::~DoublyLinkedList() {
         curr = curr->next;
         delete temp;
     }
-} 
+}
 
 Node* DoublyLinkedList::head_ptr() const {
     return head;
