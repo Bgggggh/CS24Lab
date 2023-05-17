@@ -27,10 +27,10 @@ HashMap::~HashMap() {
 void HashMap::add(const std::string& key, Node* cur) {
     // Adds a new key-value pair to the hash map
     int index = hash_string(key) % TABLE_SIZE;
-    HashNode* curr = table[index];
-    if (curr == nullptr) {
+    if (!table[index]) {
         table[index] = new HashNode(key, cur);
     } else {
+        HashNode* curr = table[index];
         while (curr->next) {
             curr = curr->next;
         }

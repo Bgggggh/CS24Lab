@@ -19,7 +19,7 @@ public:
   public:
     Iterator() {
       curr_node = nullptr;
-    } 
+    }
     Iterator(Node* node) {
       curr_node = node;
     }
@@ -34,7 +34,7 @@ public:
 
 private:
   // Member Variables
-  DoublyLinkedList* list;
+  DoublyLinkedList* dict;
 
 private:
   // Helper Functions

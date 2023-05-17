@@ -25,10 +25,7 @@ int hash_string(const std::string& str);
 class HashMap {
 public:
     HashMap() {
-        table = new HashNode*[TABLE_SIZE]();
-        for(int i = 0; i < TABLE_SIZE; i++){
-            table[i] = nullptr;
-        }
+        table = new HashNode*[TABLE_SIZE] {nullptr};
     } // Initialize table to nullptrs
     ~HashMap();
 
