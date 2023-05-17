@@ -11,8 +11,9 @@ int Counter::Iterator::value() const {
 }
 
 Counter::Iterator& Counter::Iterator::operator ++ () {
-    curr_node = curr_node->next;
-    
+    if(curr_node){
+        curr_node = curr_node->next;
+    }
     return *this;
 }
 
