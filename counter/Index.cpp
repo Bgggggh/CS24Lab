@@ -20,22 +20,32 @@ HashMap::~HashMap() {
             curr = curr->next;
             delete temp;
         }
+        table[i] = nullptr;
     }
-    delete[] table;
 }
 
 void HashMap::add(const std::string& key, Node* cur) {
     // Adds a new key-value pair to the hash map
     int index = hash_string(key) % TABLE_SIZE;
-    HashNode* curr = table[index];
-    if (curr == nullptr) {
-        table[index] = new HashNode(key, cur);
-    } else {
-        while (curr->next) {
-            curr = curr->next;
-        }
-        curr->next = new HashNode(key, cur);
+    HashNode *prev = nullptr;
+    HashNode *entry = table[index];
+
+    while (entry != nullptr && entry->key != key) {
+        prev = entry;
+        entry = entry->next;
     }
+
+    if (entry == nullptr) {
+        entry = new HashNode(key, cur);
+        if (prev == nullptr) {
+            table[index] = entry;
+        } else {
+            prev->next = entry;
+        }
+    } else {
+        entry->node = cur;
+    }
+
 }
 
 Node* HashMap::get(const std::string& key) const {

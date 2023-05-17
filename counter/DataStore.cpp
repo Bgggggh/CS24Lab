@@ -36,42 +36,33 @@ void DoublyLinkedList::insert(std::string key, int value) {
         tail = new_node;
     }
     count++;
+    map.add(key, new_node);
 }
 
 Node* DoublyLinkedList::search(std::string key) const{
-    Node* curr = head;
-    while (curr != nullptr) {
-        if (curr->key == key) {
-            return curr;
-        }
-        curr = curr->next;
-    }
-    return nullptr;
+    return map.get(key);
 }
 
 bool DoublyLinkedList::remove(std::string key) {
-    Node* curr = head;
-    while (curr != nullptr) {
-        if (curr->key == key) {
-            if (curr == head) {
-                head = head->next;
-                if (head != nullptr) {
-                    head->prev = nullptr;
-                }
-            } else if (curr == tail) {
-                tail = tail->prev;
-                if (tail != nullptr) {
-                    tail->next = nullptr;
-                }
-            } else {
-                curr->prev->next = curr->next;
-                curr->next->prev = curr->prev;
-            }
-            delete curr;
-            count--;
-            return true;
+    auto curr = map.get(key);
+    if (curr == nullptr)
+        return false;
+    count--;
+    if (curr == head) {
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
         }
-        curr = curr->next;
+    } else if (curr == tail) {
+        tail = tail->prev;
+        if (tail != nullptr) {
+            tail->next = nullptr;
+        }
+    } else {
+        curr->prev->next = curr->next;
+        curr->next->prev = curr->prev;
     }
-    return false;
+    delete curr;
+    map.remove(key);
+    return true; // node removed successfully
 }

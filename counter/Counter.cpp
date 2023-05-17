@@ -3,15 +3,15 @@
 // Counter Member Functions
 
 Counter::Counter() {
-    list = new DoublyLinkedList;
+    dict = new DoublyLinkedList();
 }
 
 Counter::~Counter() {
-    delete list;
+    delete dict;
 }
 
 size_t Counter::count() const {
-    return list->key_count();
+    return dict->key_count();
 }
 
 int Counter::total() const {
@@ -23,27 +23,27 @@ int Counter::total() const {
 }
 
 void Counter::inc(const std::string& key, int by) {
-    auto node = list->search(key);
+    auto node = dict->search(key);
     if (node)
         node->value = node->value + by;
     else
-        list->insert(key, 0 + by);
+        set(key, 0 + by);
 }
 
 void Counter::dec(const std::string& key, int by) {
-    auto node = list->search(key);
+    auto node = dict->search(key);
     if (node)
         node->value = node->value - by;
     else
-        list->insert(key, 0 - by);
+        set(key, 0 - by);
 }
 
 void Counter::del(const std::string& key) {
-    list->remove(key);
+    dict->remove(key);
 }
 
 int Counter::get(const std::string& key) const{
-    auto node = list->search(key);
+    auto node = dict->search(key);
     if (node)
         return node->value;
     else
@@ -51,15 +51,15 @@ int Counter::get(const std::string& key) const{
 }
 
 void Counter::set(const std::string& key, int count) {
-    auto node = list->search(key);
+    auto node = dict->search(key);
     if (node)
         node->value = count;
     else    
-        list->insert(key, count);
+        dict->insert(key, count);
 }
 
 Counter::Iterator Counter::begin() const {
-    Counter::Iterator it(list->head_ptr());
+    Counter::Iterator it(dict->head_ptr());
     return it;
 }
 

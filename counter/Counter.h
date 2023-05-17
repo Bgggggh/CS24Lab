@@ -34,7 +34,7 @@ public:
 
 private:
   // Member Variables
-  DoublyLinkedList* list;
+  DoublyLinkedList* dict;
 
 private:
   // Helper Functions
