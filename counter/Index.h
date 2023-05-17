@@ -18,7 +18,7 @@ public:
 };
 
 // Our hash table maps string keys to nodes
-const int TABLE_SIZE = 100000000000000; // Size of the hash table array
+const long int TABLE_SIZE = 100000000000000; // Size of the hash table array
 
 int hash_string(const std::string& str);
 
