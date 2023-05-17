@@ -18,11 +18,11 @@ public:
 
   public:
     Iterator() {
-        curr_node = nullptr;
+      curr_node = nullptr;
     }
     Iterator(Node* node) {
-        curr_node = node;
-    } 
+      curr_node = node;
+    }
 
     const std::string& key() const;
     int value() const;
@@ -34,7 +34,7 @@ public:
 
 private:
   // Member Variables
-  DoublyLinkedList* dict;
+  DoublyLinkedList* list;
 
 private:
   // Helper Functions

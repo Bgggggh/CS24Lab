@@ -36,18 +36,23 @@ void DoublyLinkedList::insert(std::string key, int value) {
         tail = new_node;
     }
     count++;
-    map.add(key, new_node);
 }
 
 Node* DoublyLinkedList::search(std::string key) const{
-    return map.get(key);
+    Node* curr = head;
+    while (curr != nullptr) {
+        if (curr->key == key) {
+            return curr;
+        }
+        curr = curr->next;
+    }
+    return nullptr;
 }
 
 bool DoublyLinkedList::remove(std::string key) {
     Node* curr = head;
     while (curr != nullptr) {
         if (curr->key == key) {
-            count--;
             if (curr == head) {
                 head = head->next;
                 if (head != nullptr) {
@@ -63,7 +68,7 @@ bool DoublyLinkedList::remove(std::string key) {
                 curr->next->prev = curr->prev;
             }
             delete curr;
-            map.remove(key);
+            count--;
             return true;
         }
         curr = curr->next;
