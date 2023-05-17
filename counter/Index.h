@@ -18,18 +18,15 @@ public:
 };
 
 // Our hash table maps string keys to nodes
-const int TABLE_SIZE = 100; // Size of the hash table array
+const int TABLE_SIZE = 100000000000000; // Size of the hash table array
 
 int hash_string(const std::string& str);
 
 class HashMap {
 public:
     HashMap() {
-        // table();
-        for(int i = 0; i < TABLE_SIZE; i++) {
-            table[i] = nullptr;
-        }
-    }
+        table = new HashNode*[TABLE_SIZE] {nullptr};
+    } // Initialize table to nullptrs
     ~HashMap();
 
     void add(const std::string& key, Node* cur);
@@ -37,7 +34,7 @@ public:
     void remove(const std::string& key);
 
 private:
-    HashNode* table[TABLE_SIZE]; // Array of pointers to HashNode
+    HashNode** table; // Array of pointers to HashNode
 };
 
 #endif
