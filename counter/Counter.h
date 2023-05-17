@@ -19,7 +19,7 @@ public:
   public:
     Iterator() {
       curr_node = nullptr;
-    }
+    } 
     Iterator(Node* node) {
       curr_node = node;
     }
