@@ -85,36 +85,33 @@ Heap::Entry Heap::pushpop(const std::string& value, float score)
     }
 
     Entry entry = { value, score };
-    if (score < mData[0].score) {
-        return entry;
-    }
-
+    
     std::swap(entry, mData[0]);
 
-    size_t currentIndex = 0;
+    size_t index = 0;
     while (true) {
-        size_t leftChildIndex = 2 * currentIndex + 1;
-        size_t rightChildIndex = 2 * currentIndex + 2;
+        size_t leftChild = 2 * index + 1;
+        size_t rightChild = 2 * index + 2;
 
-        if (leftChildIndex >= mCount) {
+        if (leftChild >= mCount){
             break;
         }
 
-        size_t minIndex = currentIndex;
-        if (mData[leftChildIndex].score < mData[minIndex].score) {
-            minIndex = leftChildIndex;
+        size_t smallest = index;
+
+        if (leftChild < mCount && mData[leftChild].score < mData[smallest].score) {
+            smallest = leftChild;
+        }
+        if (rightChild < mCount && mData[rightChild].score < mData[smallest].score) {
+            smallest = rightChild;
         }
 
-        if (rightChildIndex < mCount && mData[rightChildIndex].score < mData[minIndex].score) {
-            minIndex = rightChildIndex;
-        }
-
-        if (minIndex == currentIndex) {
+        if (smallest == index) {
             break;
         }
 
-        std::swap(mData[currentIndex], mData[minIndex]);
-        currentIndex = minIndex;
+        std::swap(mData[index], mData[smallest]);
+        index = smallest;
     }
 
     return entry;
@@ -129,6 +126,7 @@ void Heap::push(const std::string& value, float score)
 
     Entry entry = { value, score };
     size_t currentIndex = mCount;
+    
     size_t parentIndex = (currentIndex - 1) / 2;
 
     while (currentIndex > 0 && entry.score < mData[parentIndex].score) {
