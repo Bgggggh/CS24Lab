@@ -2,7 +2,7 @@
 #include<iostream>
 #include "Heap.h"
 
-Heap::Heap(size_t capacity)
+Heap::Heap(size_t capacity = 20)
     : mData(new Entry[capacity]), mCapacity(capacity), mCount(0)
 {}
 
