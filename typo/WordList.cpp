@@ -22,15 +22,17 @@ WordList::WordList(std::istream& stream) {
 Heap WordList::correct(const std::vector<Point>& points, size_t maxcount, float cutoff) const
 {
     Heap result(maxcount);
+
     for (const auto& word : mWords) {
         if (word.length() == points.size()) {
             float totalScore = 0.0f;
-            for (size_t i = 0; i < points.size(); ++i)
-            {
+            for (size_t i =0;i < points.size();++i){
+
                 float dx = points[i].x - QWERTY[word[i]-'a'].x;
                 float dy = points[i].y - QWERTY[word[i]-'a'].y;
                 float distance = std::sqrt(dx * dx + dy * dy);
                 float score = 1.0f / (10 * distance * distance + 1);
+
                 totalScore += score;
             }
             float score = totalScore / static_cast<float>(points.size());
@@ -39,6 +41,7 @@ Heap WordList::correct(const std::vector<Point>& points, size_t maxcount, float 
             }
         }
     }
+
     return result;
 }
 

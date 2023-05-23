@@ -2,7 +2,7 @@
 #include<iostream>
 #include "Heap.h"
 
-Heap::Heap(size_t capacity = 20)
+Heap::Heap(size_t capacity = 10)
     : mData(new Entry[capacity]), mCapacity(capacity), mCount(0)
 {}
 
@@ -80,12 +80,12 @@ Heap::Entry Heap::pop()
 
 Heap::Entry Heap::pushpop(const std::string& value, float score)
 {
-    if (mCount == mCapacity) {
-        throw std::overflow_error("Heap is full.");
+    if(mCount == 0){
+        throw std::underflow_error("Heap is empty");
     }
 
     Entry entry = { value, score };
-    if (mCount == 0 || score < mData[0].score) {
+    if (score < mData[0].score) {
         return entry;
     }
 
@@ -118,12 +118,13 @@ Heap::Entry Heap::pushpop(const std::string& value, float score)
     }
 
     return entry;
+    
 }
 
 void Heap::push(const std::string& value, float score)
 {
     if (mCount == mCapacity) {
-        throw std::runtime_error("Heap is full.");
+        throw std::overflow_error("Heap is full.");
     }
 
     Entry entry = { value, score };
@@ -147,7 +148,6 @@ const Heap::Entry& Heap::top() const
     }
     return mData[0];
 }
-
 
 
 
